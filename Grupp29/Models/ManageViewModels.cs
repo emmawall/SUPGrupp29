@@ -58,6 +58,25 @@ namespace Grupp29.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangeEmailViewModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Nuvarande email")]
+        public string OldEmail { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [EmailAddress]
+        [Display(Name = "Ny email")]
+        public string NewEmail { get; set; }
+
+        [EmailAddress]
+        [Display(Name = "Bekräfta nya emailadressen")]
+        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        public string ConfirmEmail { get; set; }
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required]
