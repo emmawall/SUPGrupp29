@@ -1,8 +1,19 @@
-﻿
+﻿@model Grupp29.Models.RoomList
 @{
     ViewBag.Title = "CreateList";
 }
 
 <h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
+
+<div>
+    @Html.TextBoxFor(m => m.listName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.listName, "", new { @class = "text-danger" })
+    <input type="submit" class="btn btn-default" value="Lägg till" />
+</div>
+    
+
+
+
+
 
