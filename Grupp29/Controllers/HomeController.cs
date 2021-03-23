@@ -20,11 +20,18 @@ namespace Grupp29.Controllers
 			return View();
 		}
 
-		public ActionResult Contact()
+		public ActionResult MyPage()
 		{
-			ViewBag.Message = "Your contact page.";
+			ViewBag.Message = "Välkommen till din personliga sida";
 
 			return View();
 		}
-	}
+
+        //public ActionResult CreateList()
+        //{
+        //    ViewBag.Message = "Här kan du skapa din personliga lista";
+
+        //    return View();
+        //}
+    }
 }
