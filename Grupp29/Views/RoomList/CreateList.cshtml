@@ -1,17 +1,19 @@
 ﻿@model Grupp29.Models.RoomList
 @{
-    ViewBag.Title = "CreateList";
+    ViewBag.Title = "Skapa en ny lista";
 }
 
 <h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
+@*<h3>@ViewBag.Message</h3>*@
 
-<div>
-    @Html.TextBoxFor(m => m.listName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.listName, "", new { @class = "text-danger" })
-    <input type="submit" class="btn btn-default" value="Lägg till" />
-</div>
     
+<div class="form-inline">
+        @Html.TextBoxFor(m => m.listName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.listName, "", new { @class = "text-danger" })
+        <input type="submit" class="btn btn-default" value="Lägg till" />
+</div>
+
+
 
 
 
