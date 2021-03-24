@@ -20,12 +20,12 @@ namespace Grupp29.Controllers
 			return View();
 		}
 
-		public ActionResult MyPage()
-		{
-			ViewBag.Message = "Välkommen till din personliga sida";
+		//public ActionResult MyPage()
+		//{
+		//	ViewBag.Message = "Välkommen till din personliga sida";
 
-			return View();
-		}
+		//	return View();
+		//}
 
         //public ActionResult CreateList()
         //{

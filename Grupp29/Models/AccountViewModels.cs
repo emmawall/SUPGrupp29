@@ -50,7 +50,6 @@ namespace Grupp29.Models
     {
         [Required]
         [Display(Name = "Användarnamn")]
-        [EmailAddress]
         public string Username { get; set; }
 
         [Required]
@@ -65,7 +64,6 @@ namespace Grupp29.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
         [Display(Name = "Användarnamn")]
         public string Username { get; set; }
 
@@ -84,7 +82,6 @@ namespace Grupp29.Models
     public class ResetPasswordViewModel
     {
         [Required]
-        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -105,7 +102,6 @@ namespace Grupp29.Models
     public class ForgotPasswordViewModel
     {
         [Required]
-        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
