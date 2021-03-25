@@ -190,6 +190,10 @@
     <Compile Include="Migrations\202103231035362_RoomList.Designer.cs">
       <DependentUpon>202103231035362_RoomList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103251058516_namn.cs" />
+    <Compile Include="Migrations\202103251058516_namn.Designer.cs">
+      <DependentUpon>202103251058516_namn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -286,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103231035362_RoomList.resx">
       <DependentUpon>202103231035362_RoomList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103251058516_namn.resx">
+      <DependentUpon>202103251058516_namn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
