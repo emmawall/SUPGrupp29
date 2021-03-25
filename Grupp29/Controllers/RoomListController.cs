@@ -51,6 +51,18 @@ namespace Grupp29.Controllers
             return View(list);
 
         }
+        public ActionResult ShowList(string user)
+        {
+            var app = new ApplicationDbContext();
+            var ctx = db.RoomLists;
+            var list = new RoomList();
+            var account = app.Users.FirstOrDefault(a => a.Id == user);
+
+            list.listName = account.listName;
+
+
+          return View("RoomList", list);
+        }
     }
 
 }
