@@ -9,6 +9,9 @@ namespace Grupp29.Models
     public class RoomList
     {
         [Key]
+        public int id { get; set; }
+
+        [Display(Name = "Listnamn")]
         public string listName { get; set; }
     }
 }
