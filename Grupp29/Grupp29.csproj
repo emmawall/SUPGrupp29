@@ -173,7 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyPageController.cs" />
-    <Compile Include="Controllers\RoomListController.cs" />
+    <Compile Include="Controllers\RoomListsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -264,10 +264,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Manage\ChangeEmail.cshtml" />
     <Content Include="Views\MyPage\MyPage.cshtml" />
-    <Content Include="Views\RoomList\CreateList.cshtml" />
     <Content Include="Views\FunFacts\FunFacts.cshtml" />
     <Content Include="Views\FAQ\FAQ.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\RoomLists\Create.cshtml" />
+    <Content Include="Views\RoomLists\Delete.cshtml" />
+    <Content Include="Views\RoomLists\Details.cshtml" />
+    <Content Include="Views\RoomLists\Edit.cshtml" />
+    <Content Include="Views\RoomLists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
