@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Grupp29.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Grupp29.Controllers
 {
@@ -17,6 +18,10 @@ namespace Grupp29.Controllers
         // GET: RoomLists
         public ActionResult Index()
         {
+            var ctx = new ApplicationDbContext();
+            var user = User.Identity.GetUserId();
+            var account = ctx.Users.FirstOrDefault(a => a.Id == user);
+            var userid = db.Users.Single(i => i.Id == user);
             return View(db.RoomLists.ToList());
         }
 
