@@ -32,5 +32,7 @@ namespace Grupp29.Models
             return new ApplicationDbContext();
         }
         public DbSet<RoomList> RoomLists{ get; set;}
-    }
+
+		public System.Data.Entity.DbSet<Grupp29.Models.PlantList> PlantLists { get; set; }
+	}
 }

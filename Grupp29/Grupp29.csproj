@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyPageController.cs" />
+    <Compile Include="Controllers\PlantListsController.cs" />
     <Compile Include="Controllers\RoomListsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -202,10 +203,19 @@
     <Compile Include="Migrations\202104011012592_laTillListId.Designer.cs">
       <DependentUpon>202104011012592_laTillListId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104231148163_LaTillPlantList.cs" />
+    <Compile Include="Migrations\202104231148163_LaTillPlantList.Designer.cs">
+      <DependentUpon>202104231148163_LaTillPlantList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104231236574_TestarPlantImgIgen.cs" />
+    <Compile Include="Migrations\202104231236574_TestarPlantImgIgen.Designer.cs">
+      <DependentUpon>202104231236574_TestarPlantImgIgen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PlantList.cs" />
     <Compile Include="Models\RoomList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -276,9 +286,15 @@
     <Content Include="Views\RoomLists\Details.cshtml" />
     <Content Include="Views\RoomLists\Edit.cshtml" />
     <Content Include="Views\RoomLists\Index.cshtml" />
+    <Content Include="Views\PlantLists\Create.cshtml" />
+    <Content Include="Views\PlantLists\Delete.cshtml" />
+    <Content Include="Views\PlantLists\Details.cshtml" />
+    <Content Include="Views\PlantLists\Edit.cshtml" />
+    <Content Include="Views\PlantLists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -311,6 +327,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104011012592_laTillListId.resx">
       <DependentUpon>202104011012592_laTillListId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104231148163_LaTillPlantList.resx">
+      <DependentUpon>202104231148163_LaTillPlantList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104231236574_TestarPlantImgIgen.resx">
+      <DependentUpon>202104231236574_TestarPlantImgIgen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
