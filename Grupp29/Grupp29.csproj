@@ -198,6 +198,10 @@
     <Compile Include="Migrations\202103260854459_laTillIdPaRoomlist.Designer.cs">
       <DependentUpon>202103260854459_laTillIdPaRoomlist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104011012592_laTillListId.cs" />
+    <Compile Include="Migrations\202104011012592_laTillListId.Designer.cs">
+      <DependentUpon>202104011012592_laTillListId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -304,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103260854459_laTillIdPaRoomlist.resx">
       <DependentUpon>202103260854459_laTillIdPaRoomlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104011012592_laTillListId.resx">
+      <DependentUpon>202104011012592_laTillListId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

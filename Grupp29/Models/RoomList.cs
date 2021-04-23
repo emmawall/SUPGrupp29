@@ -11,6 +11,8 @@ namespace Grupp29.Models
         [Key]
         public int id { get; set; }
 
+        public virtual ApplicationUser listId { get; set; }
+
         [Display(Name = "Listnamn")]
         public string listName { get; set; }
     }

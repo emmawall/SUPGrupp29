@@ -18,11 +18,28 @@ namespace Grupp29.Controllers
         // GET: RoomLists
         public ActionResult Index()
         {
+  
             var ctx = new ApplicationDbContext();
             var user = User.Identity.GetUserId();
             var account = ctx.Users.FirstOrDefault(a => a.Id == user);
-            var userid = db.Users.Single(i => i.Id == user);
-            return View(db.RoomLists.ToList());
+            //var FriendList = db.RoomLists.Where(x => x.listId.Id.Equals(user) || x.listId.Id.Equals(user)).ToList();
+
+
+            //return View(FriendList);
+
+
+			return View(db.RoomLists.ToList());
+		}
+
+        public ActionResult showLists()
+        {
+
+
+            var user = User.Identity.GetUserId();
+            var account = ctx.Users.FirstOrDefault(a => a.Id == user);
+            var FriendList = db.RoomLists.Where(x => x.listId.Id.Equals(user) || x.listId.Id.Equals(user)).ToList();
+
+            return View(FriendList);
         }
 
         // GET: RoomLists/Details/5
