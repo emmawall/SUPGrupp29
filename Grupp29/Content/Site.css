@@ -51,3 +51,22 @@ customForm {
     float: right;
     font-size: 80%;
 }
+
+.forumPostComment {
+    height: auto;
+    margin-bottom: 10px;
+    box-shadow: rgba(128, 128, 128, 0.2) 5px 5px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(109, 109, 109, 0.3);
+}
+
+.forumPostCommentAuthor {
+    color: lightslategray;
+    font-size: 80%;
+}

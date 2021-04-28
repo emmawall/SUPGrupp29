@@ -4,63 +4,116 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Forum</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+@using Grupp29.Controllers
+<br />
+<div class="forumPost">
+    <div class="forumPostContent">
+        @{
+            var time = ForumsController.GetDateFromDateTime(Model.DateTime);
+            //var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(Model.creator);
+            //var Name = FormalBlogPostsController.GetNameFromUsername(Model.creator);
+        }
+        <h3>@Html.DisplayFor(mode => Model.Title)<span class="authorTime">@time</span></h3>
+        <h6>@Html.DisplayFor(model => Model.Category)</h6>
+        <div class="profile-thumbnail" style="float:right;">
+            @*<span><img src="~/Image/@imageSrc" style="height:70px; width:70px;"></span>*@
+            <br />
+            @*<p style="margin-left: 10px;">@Name</p>*@
+        </div>
+        <p style="white-space: pre-line">@Html.DisplayFor(modelItem => Model.Entry)</p>
+        <br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+    </div>
+    <div class="blogButtons">
+        @if (Model.FileName != null)
+        {
+            <a href="~/FormalBlogPostUploads/@Model.FileName" download>@Model.FileName</a>
+            <br />
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Entry)
-        </dt>
+        @if (Model.Creator.Equals(User.Identity.Name))
+        {
 
-        <dd>
-            @Html.DisplayFor(model => model.Entry)
-        </dd>
+            <p>
+                @Html.ActionLink("Redigera", "Edit", new { id = Model.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = Model.Id })
+            </p>
+        }
+        @*else if (!Model.creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
+        {
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Creator)
-        </dt>
+            <p>
+                @Html.ActionLink("Ta bort", "Delete", new { id = Model.id })
+            </p>
+        }*@
+        else
+        {
+            <br />
+        }
+        @{
+            ForumPostCommentsController commentsController = new ForumPostCommentsController();
+        }
+        @foreach (var comment in commentsController.GetComments(Model.Id))
+        {
+            var commentTime = ForumsController.GetDateFromDateTime(comment.DateTime);
+            <div class="forumPostComment" id="@Model.Id">
 
-        <dd>
-            @Html.DisplayFor(model => model.Creator)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateTime)
-        </dt>
+                <p>@comment.CommentText</p>
+                <p class="forumPostCommentAuthor">@comment.Author | @commentTime</p>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateTime)
-        </dd>
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
+        @{ int id = Model.Id;
+            int textBoxId = id + 999;
+            string textBoxIdString = textBoxId.ToString();}
+        @Html.TextArea(textBoxIdString, null, new { placeholder = "Skriv en kommentar", id = "1", rows = "3", cols = "1000" })
 
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FileName)
-        </dt>
+        <button id="@Model.Id" onClick="reply_click(this.id)">Skicka</button>
 
-        <dd>
-            @Html.DisplayFor(model => model.FileName)
-        </dd>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
 
-    </dl>
+    <script>
+       var urlpath = '@Url.Action("CreateComment", "ForumPostComments")';
+
+    </script>
+    <script type="text/javascript">
+
+            $(function () {
+
+
+
+                $('#btnStart').on('click', function () {
+                    console.log(x);
+            });
+            });
+            function reply_click(clicked_id) {
+                var clicked_id_int = parseInt(clicked_id);
+                var commentId = clicked_id_int += @textBoxId - 2;
+                console.log(commentId)
+                var commentTxt = document.getElementById("1").value;
+
+
+                console.log(clicked_id);
+                $.ajax({
+                    type: 'POST',
+                    url: urlpath,
+                    data: JSON.stringify({ ForumPostId: clicked_id, CommentText: commentTxt }),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                })
+
+                location.reload();
+            }
+    </script>
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    @Html.ActionLink("Tillbaka till inlägg", "Index")
 </p>
+
+

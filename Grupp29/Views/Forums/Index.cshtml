@@ -53,13 +53,13 @@
         {
             <a href="~/FormalBlogPostUploads/@ForumPost.FileName" download>@ForumPost.FileName</a>
         }
-        @*@if (ForumPost.Creator.Equals(User.Identity.Name))
+        @if (ForumPost.Creator.Equals(User.Identity.Name))
         {
 
             <p>
-                @Html.ActionLink("Se inlägg", "Details", new { id = ForumPost.Id }) | @Html.ActionLink("Redigera", "Edit", new { id = ForumPost.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = ForumPost.Id })
+                @Html.ActionLink("Kommentera inlägg", "Details", new { id = ForumPost.Id }) | @Html.ActionLink("Redigera", "Edit", new { id = ForumPost.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = ForumPost.Id })
             </p>
-        }*@
+        }
         @*else if (!ForumPost.Creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
             {
                 <p>
@@ -72,21 +72,21 @@
                 @Html.ActionLink("Se inlägg", "Details", new { id = ForumPost.Id })
             </p>
         }
-        @*@{
-                FormalBlogPostCommentsController commentsController = new FormalBlogPostCommentsController();
-            }*@
-        @*@foreach (var comment in commentsController.GetComments(BlogPost.id, "Formal"))
+        @{
+                ForumPostCommentsController commentsController = new ForumPostCommentsController();
+            }
+        @foreach (var comment in commentsController.GetComments(ForumPost.Id))
         {
-            var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
+            var commentTime = ForumsController.GetDateFromDateTime(comment.DateTime);
 
             <div class="formalBlogPostComment">
 
 
-                <p>@comment.commentText</p>
-                <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+                <p>@comment.CommentText</p>
+                <p class="formalBlogPostCommentAuthor">@comment.Author | @commentTime</p>
             </div>
 
-        }*@
+        }
 
     </div>
 
