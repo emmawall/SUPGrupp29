@@ -44,17 +44,29 @@ namespace Grupp29.Controllers
             if (imageFile == null)
             {
                 filename = "DefaultPlant.png";
-            }
 
-            else
-            {
+            } else {
                 filename = imageFile.FileName;
                 var filePath = Path.Combine(Server.MapPath("~/Image"), filename);
 
                 imageFile.SaveAs(filePath);
             }
 
-            return View();
+            //using (var db = new ApplicationDbContext())
+
+            //    if (ModelState.IsValid)
+            //    {
+            //        var plant = new PlantList
+            //        {
+            //            PlantImg = model.PlantImg,
+            //            PlantName = model.PlantName,
+            //            Description = model.Description,
+            //            WaterNeed = model.WaterNeed,
+            //            Location = model.Location
+            //        };
+            //    }
+
+                return View();
         }
 
         // POST: PlantLists/Create
@@ -62,7 +74,7 @@ namespace Grupp29.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PlantId,PlantName,Description,WaterNeed,Location")] PlantList plantList)
+        public ActionResult Create([Bind(Include = "PlantId,PlantImg,PlantName,Description,WaterNeed,Location")] PlantList plantList)
         {
             if (ModelState.IsValid)
             {

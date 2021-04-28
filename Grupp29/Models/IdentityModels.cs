@@ -33,6 +33,19 @@ namespace Grupp29.Models
         }
         public DbSet<RoomList> RoomLists{ get; set;}
 
-		public System.Data.Entity.DbSet<Grupp29.Models.PlantList> PlantLists { get; set; }
-	}
+		//public System.Data.Entity.DbSet<Grupp29.Models.PlantList> PlantLists { get; set; }
+
+		public DbSet<PlantList> PlantLists { get; set; }
+
+		//public System.Data.Entity.DbSet<Grupp29.Models.Forum> Fora { get; set; }
+
+        public DbSet<Forum> Fora { get; set; }
+
+		//public System.Data.Entity.DbSet<Grupp29.Models.ForumPostCategory> ForumPostCategories { get; set; }
+        public DbSet<ForumPostCategory> ForumPostCategories { get; set; }
+		
+        //public System.Data.Entity.DbSet<Grupp29.Models.ForumPostComment> ForumPostComments { get; set; }
+        public DbSet<ForumPostComment> ForumPostComments { get; set; }
+	
+    }
 }

@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Grupp29.Models.Forum>
+
+@{
+    ViewBag.Title = "Index";
+}
+@using Grupp29.Controllers
+
+@if (Request.IsAuthenticated)
+{
+    <h2>Forum</h2>
+    <p>
+        @Html.ActionLink("Skapa nytt inlägg", "Create")
+    </p>
+
+    var Model1 = Model.OrderByDescending(c => c.Id);
+
+    ForumsController controller = new ForumsController();
+
+    using (Html.BeginForm())
+    {
+        @*<p>
+                Filtrera efter kategori: @Html.DropDownList("SearchString", new SelectList(controller.GetCategories()), new { @id = "9999" })
+
+                <input type="submit" value="Filtrera" class="btn btn-default"/>
+            </p>*@
+    }
+
+    foreach (var ForumPost in Model1)
+    {
+        var ForumPostIdString = ForumPost.Id.ToString();
+<div class="forumPost" id=@ForumPostIdString>
+
+    <div class="forumPostContent">
+        @{
+            var time = ForumsController.GetDateFromDateTime(ForumPost.DateTime);
+            //var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(BlogPost.creator);
+            //var Name = ForumsController.GetNameFromUsername(ForumPost.Creator);
+        }
+
+        <h3>@Html.DisplayFor(modelItem => ForumPost.Title)<span style="float: right; font-size: 70%;">@time</span></h3>
+        <h6>@Html.DisplayFor(modelItem => ForumPost.Category)</h6>
+        <div class="profile-thumbnail" style="float:right;">
+            @*<span><img src="~/Image/@imageSrc" style="height:70px; width:70px;"></span>
+                <br />
+                <p style="margin-left: 10px;">@Name</p>*@
+        </div>
+        <p style="white-space: pre-line">@Html.DisplayFor(modelItem => ForumPost.Entry)</p>
+
+        <br />
+    </div>
+    <div class="blogButtons">
+        @if (ForumPost.FileName != null)
+        {
+            <a href="~/FormalBlogPostUploads/@ForumPost.FileName" download>@ForumPost.FileName</a>
+        }
+        @*@if (ForumPost.Creator.Equals(User.Identity.Name))
+        {
+
+            <p>
+                @Html.ActionLink("Se inlägg", "Details", new { id = ForumPost.Id }) | @Html.ActionLink("Redigera", "Edit", new { id = ForumPost.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = ForumPost.Id })
+            </p>
+        }*@
+        @*else if (!ForumPost.Creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
+            {
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
+                </p>
+            }*@
+        else
+        {
+            <p>
+                @Html.ActionLink("Se inlägg", "Details", new { id = ForumPost.Id })
+            </p>
+        }
+        @*@{
+                FormalBlogPostCommentsController commentsController = new FormalBlogPostCommentsController();
+            }*@
+        @*@foreach (var comment in commentsController.GetComments(BlogPost.id, "Formal"))
+        {
+            var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
+
+            <div class="formalBlogPostComment">
+
+
+                <p>@comment.commentText</p>
+                <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+            </div>
+
+        }*@
+
+    </div>
+
+
+    
+
+</div>
+                }
+
+            } else {
+    <h2>Du måste logga in för att komma åt denna sida!</h2>
+            }
+
+
+
+
+
+
+
+
+
+
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Entry)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Creator)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Entry)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creator)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>*@

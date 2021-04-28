@@ -1,0 +1,23 @@
+﻿@model Grupp29.Models.ForumPostCategory
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Ta bort kategori</h2>
+
+<h3>Är du säker på att du vill ta bort denna kategori?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Ta bort" class="btn btn-default" /> |
+            @Html.ActionLink("Tillbaka", "Index")
+        </div>
+    }
+</div>
