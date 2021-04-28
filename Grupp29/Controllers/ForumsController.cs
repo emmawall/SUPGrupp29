@@ -53,26 +53,29 @@ namespace Grupp29.Controllers
 
         //}
 
-        //public static string GetNameFromUsername(string userName)
-        //{
-        //    string name = "";
-        //    string firstname = "";
-        //    string lastname = "";
+        public static string GetNameFromUsername(string userName)
+        {
+            string name = "";
+            string displayName = "";
+            //string firstname = "";
+            //string lastname = "";
 
-        //    ApplicationDbContext dbContext = new ApplicationDbContext();
-        //    foreach (ApplicationUser user in dbContext.Users.ToList())
-        //    {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            foreach (ApplicationUser user in dbContext.Users.ToList())
+            {
 
-        //        if (user.UserName.Equals(userName))
-        //        {
-        //            firstname = user.Firstname;
-        //            lastname = user.Lastname;
-        //            name = firstname + " " + lastname;
-        //        }
-        //    }
-        //    return name;
+                if (user.UserName.Equals(userName))
+                {
+                    displayName = user.DisplayName;
+                    name = displayName;
+                    //firstname = user.Firstname;
+                    //lastname = user.Lastname;
+                    //name = firstname + " " + lastname;
+                }
+            }
+            return name;
 
-        //}
+        }
 
         [HttpPost]
         public List<String> GetCategories()
