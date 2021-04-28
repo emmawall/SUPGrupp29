@@ -64,7 +64,7 @@ namespace Grupp29.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Användarnamn")]
+        [Display(Name = "Email")]
         public string Username { get; set; }
 
         [Required]
@@ -77,6 +77,11 @@ namespace Grupp29.Models
         [Display(Name = "Bekräfta lösenord")]
         [Compare("Password", ErrorMessage = "Lösenordet och det bekräftade lösenordet matchar inte.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Lösenordet måste vara minst 2 tecken långt.", MinimumLength = 2)]
+        [Display(Name = "Användarnamn")]
+        public string DisplayName { get; set; }
     }
 
     public class ResetPasswordViewModel

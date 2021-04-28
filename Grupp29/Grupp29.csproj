@@ -234,6 +234,14 @@
     <Compile Include="Migrations\202104280717314_AndratDateTimeIForum.Designer.cs">
       <DependentUpon>202104280717314_AndratDateTimeIForum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104280939506_LaTillDisplayName.cs" />
+    <Compile Include="Migrations\202104280939506_LaTillDisplayName.Designer.cs">
+      <DependentUpon>202104280939506_LaTillDisplayName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104280944266_AndraIRegisterViewModel.cs" />
+    <Compile Include="Migrations\202104280944266_AndraIRegisterViewModel.Designer.cs">
+      <DependentUpon>202104280944266_AndraIRegisterViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Forum.cs" />
@@ -390,6 +398,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104280717314_AndratDateTimeIForum.resx">
       <DependentUpon>202104280717314_AndratDateTimeIForum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104280939506_LaTillDisplayName.resx">
+      <DependentUpon>202104280939506_LaTillDisplayName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104280944266_AndraIRegisterViewModel.resx">
+      <DependentUpon>202104280944266_AndraIRegisterViewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
