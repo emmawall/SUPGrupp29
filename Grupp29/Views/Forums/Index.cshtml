@@ -72,7 +72,7 @@
                 @Html.ActionLink("Se inlägg", "Details", new { id = ForumPost.Id })
             </p>
         }
-        @{
+        @*@{
                 ForumPostCommentsController commentsController = new ForumPostCommentsController();
             }
         @foreach (var comment in commentsController.GetComments(ForumPost.Id))
@@ -86,7 +86,7 @@
                 <p class="formalBlogPostCommentAuthor">@comment.Author | @commentTime</p>
             </div>
 
-        }
+        }*@
 
     </div>
 
