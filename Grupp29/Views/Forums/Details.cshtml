@@ -57,12 +57,14 @@
         @foreach (var comment in commentsController.GetComments(Model.Id))
         {
             var commentTime = ForumsController.GetDateFromDateTime(comment.DateTime);
-            <div class="forumPostComment" id="@Model.Id">
+            var Names = ForumsController.GetNameFromUsername(comment.Author);
+    <div class="forumPostComment" id="@Model.Id">
+        @*<p style="margin-left: 10px;">@Names</p>*@ 
 
 
-                <p>@comment.CommentText</p>
-                <p class="forumPostCommentAuthor">@comment.Author | @commentTime</p>
-            </div>
+        <p>@comment.CommentText</p>
+        <p class="forumPostCommentAuthor">@Names | @commentTime</p>
+    </div>
 
         }
 
