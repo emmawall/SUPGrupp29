@@ -246,6 +246,10 @@
     <Compile Include="Migrations\202104281309157_LaggerTillProfilbild.Designer.cs">
       <DependentUpon>202104281309157_LaggerTillProfilbild.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104290742510_TogBortFranPlantList.cs" />
+    <Compile Include="Migrations\202104290742510_TogBortFranPlantList.Designer.cs">
+      <DependentUpon>202104290742510_TogBortFranPlantList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Forum.cs" />
@@ -413,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104281309157_LaggerTillProfilbild.resx">
       <DependentUpon>202104281309157_LaggerTillProfilbild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104290742510_TogBortFranPlantList.resx">
+      <DependentUpon>202104290742510_TogBortFranPlantList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

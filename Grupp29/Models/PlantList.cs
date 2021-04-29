@@ -14,8 +14,6 @@ namespace Grupp29.Models
 		public int PlantId { get; set; }
 
 		public string PlantImg { get; set; }
-		[NotMapped]
-		public HttpPostedFileBase ImageFile { get; set; }
 
 		public string PlantName { get; set; }
 

@@ -74,17 +74,21 @@ namespace Grupp29.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PlantId,PlantImg,PlantName,Description,WaterNeed,Location")] PlantList plantList)
+        public ActionResult Create([Bind(Include = "PlantId,PlantImg,PlantName,Description,WaterNeed,Location")] PlantList plantList, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            if (file != null)
             {
+                string fileName = Path.GetFileName(file.FileName);
+                string fileToSave = Path.Combine(Server.MapPath("~/ForumPostUploads"), fileName);
+                file.SaveAs(fileToSave);
+                plantList.PlantImg = fileName;
+            }
+            
                 db.PlantLists.Add(plantList);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(plantList);
-        }
 
         // GET: PlantLists/Edit/5
         public ActionResult Edit(int? id)

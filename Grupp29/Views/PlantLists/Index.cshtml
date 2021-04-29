@@ -3,12 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
+@using Grupp29.Controllers
+
+@if (Request.IsAuthenticated)
+{
 
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" })
 </p>
+
+    var Model1 = Model.OrderByDescending(c => c.PlantId);
+    PlantListsController controller = new PlantListsController();
+
 <table class="table">
 
     <tr>
@@ -30,29 +38,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.PlantImg)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PlantName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.WaterNeed)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Location)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.PlantId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.PlantId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.PlantId })
-    </td>
-</tr>
-}
+    @foreach (var ListOfPlants in Model1)
+    {
+        <tr>
+            <td>
+                @if (ListOfPlants.PlantImg != null)
+                {
+                    <div style="width=100%; height=100%;">
+                        <img src="~/Image/@ListOfPlants.PlantImg" style="border: solid white 40px;" width="40%" height="40%">
+                    </div>
+                }
+            </td>
+            @*<td>
+                @Html.DisplayFor(ListOfPlants => modelItem.PlantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WaterNeed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PlantId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PlantId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PlantId })
+            </td>*@
+        </tr>
+    }
 
 </table>
+}
+else
+{
+    <h2>
+        Du måste logga in för att komma åt denna sida!
+    </h2>
+}
