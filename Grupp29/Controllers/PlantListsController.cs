@@ -37,20 +37,20 @@ namespace Grupp29.Controllers
         }
 
         // GET: PlantLists/Create
-        public ActionResult Create(HttpPostedFileBase imageFile)
+        public ActionResult Create(/*HttpPostedFileBase imageFile*/)
         {
-            var filename = "";
+            //var filename = "";
 
-            if (imageFile == null)
-            {
-                filename = "DefaultPlant.png";
+            //if (imageFile == null)
+            //{
+            //    filename = "DefaultPlant.png";
 
-            } else {
-                filename = imageFile.FileName;
-                var filePath = Path.Combine(Server.MapPath("~/Image"), filename);
+            //} else {
+            //    filename = imageFile.FileName;
+            //    var filePath = Path.Combine(Server.MapPath("~/Image"), filename);
 
-                imageFile.SaveAs(filePath);
-            }
+            //    imageFile.SaveAs(filePath);
+            //}
 
             //using (var db = new ApplicationDbContext())
 
@@ -79,7 +79,7 @@ namespace Grupp29.Controllers
             if (file != null)
             {
                 string fileName = Path.GetFileName(file.FileName);
-                string fileToSave = Path.Combine(Server.MapPath("~/ForumPostUploads"), fileName);
+                string fileToSave = Path.Combine(Server.MapPath("~/Image"), fileName);
                 file.SaveAs(fileToSave);
                 plantList.PlantImg = fileName;
             }

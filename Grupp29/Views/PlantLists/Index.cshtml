@@ -49,23 +49,23 @@
                     </div>
                 }
             </td>
-            @*<td>
-                @Html.DisplayFor(ListOfPlants => modelItem.PlantName)
+            <td>
+                @Html.DisplayFor(modelItem => ListOfPlants.PlantName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => ListOfPlants.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.WaterNeed)
+                @Html.DisplayFor(modelItem => ListOfPlants.WaterNeed)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Location)
+                @Html.DisplayFor(modelItem => ListOfPlants.Location)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PlantId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.PlantId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.PlantId })
-            </td>*@
+                @Html.ActionLink("Edit", "Edit", new { id = ListOfPlants.PlantId }) |
+                @Html.ActionLink("Details", "Details", new { id = ListOfPlants.PlantId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = ListOfPlants.PlantId })
+            </td>
         </tr>
     }
 
