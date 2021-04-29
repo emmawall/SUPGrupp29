@@ -18,11 +18,11 @@
 
     using (Html.BeginForm())
     {
-        @*<p>
+        <p>
                 Filtrera efter kategori: @Html.DropDownList("SearchString", new SelectList(controller.GetCategories()), new { @id = "9999" })
 
                 <input type="submit" value="Filtrera" class="btn btn-default"/>
-            </p>*@
+            </p>
     }
 
     foreach (var ForumPost in Model1)
@@ -51,31 +51,34 @@
     <div class="blogButtons">
         @if (ForumPost.FileName != null)
         {
-            <a href="~/FormalBlogPostUploads/@ForumPost.FileName" download>@ForumPost.FileName</a>
-        }
-        @if (ForumPost.Creator.Equals(User.Identity.Name))
-        {
+                    <div style="width=100%; height=100%;">
+                        <img src="~/ForumPostUploads/@ForumPost.FileName" style="border: solid white 40px;" width="40%" height="40%">
+                    </div>
+                    @*<a href="~/FormalBlogPostUploads/@ForumPost.FileName" download>@ForumPost.FileName</a>*@
+                }
+                @if (ForumPost.Creator.Equals(User.Identity.Name))
+                {
 
-            <p>
-                @Html.ActionLink("Kommentera inlägg", "Details", new { id = ForumPost.Id }) | @Html.ActionLink("Redigera", "Edit", new { id = ForumPost.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = ForumPost.Id })
-            </p>
-        }
-        @*else if (!ForumPost.Creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
-            {
-                <p>
-                    @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
-                </p>
-            }*@
-        else
-        {
-            <p>
-                @Html.ActionLink("Se inlägg", "Details", new { id = ForumPost.Id })
-            </p>
-        }
+                    <p>
+                        @Html.ActionLink("Kommentera inlägg", "Details", new { id = ForumPost.Id }) | @Html.ActionLink("Redigera", "Edit", new { id = ForumPost.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = ForumPost.Id })
+                    </p>
+                }
+                @*else if (!ForumPost.Creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
+                {
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
+                    </p>
+                }*@
+                else
+                {
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = ForumPost.Id })
+                    </p>
+                }
 
-    </div>
+            </div>
 
-</div>
+        </div>
         }
 
             } else {

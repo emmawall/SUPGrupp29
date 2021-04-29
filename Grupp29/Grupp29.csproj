@@ -242,6 +242,10 @@
     <Compile Include="Migrations\202104280944266_AndraIRegisterViewModel.Designer.cs">
       <DependentUpon>202104280944266_AndraIRegisterViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104281309157_LaggerTillProfilbild.cs" />
+    <Compile Include="Migrations\202104281309157_LaggerTillProfilbild.Designer.cs">
+      <DependentUpon>202104281309157_LaggerTillProfilbild.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Forum.cs" />
@@ -344,7 +348,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ForumPostUploads\" />
     <Folder Include="Image\" />
+    <Folder Include="ProfileImage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -404,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104280944266_AndraIRegisterViewModel.resx">
       <DependentUpon>202104280944266_AndraIRegisterViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104281309157_LaggerTillProfilbild.resx">
+      <DependentUpon>202104281309157_LaggerTillProfilbild.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

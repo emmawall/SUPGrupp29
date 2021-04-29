@@ -57,8 +57,7 @@ namespace Grupp29.Controllers
         {
             string name = "";
             string displayName = "";
-            //string firstname = "";
-            //string lastname = "";
+        
 
             ApplicationDbContext dbContext = new ApplicationDbContext();
             foreach (ApplicationUser user in dbContext.Users.ToList())
@@ -68,9 +67,7 @@ namespace Grupp29.Controllers
                 {
                     displayName = user.DisplayName;
                     name = displayName;
-                    //firstname = user.Firstname;
-                    //lastname = user.Lastname;
-                    //name = firstname + " " + lastname;
+              
                 }
             }
             return name;
