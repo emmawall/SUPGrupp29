@@ -16,10 +16,20 @@ namespace Grupp29.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PlantLists
-        public ActionResult Index()
-        {
-            return View(db.PlantLists.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    return View(db.PlantLists.ToList());
+        //}
+
+
+
+        //public static PlantList GetIdFromPlant (int plantId)
+        //{
+            
+        //    ApplicationDbContext dbContext = new ApplicationDbContext();
+
+        //    return dbContext.PlantLists.Find(plantId);
+        //}
 
         // GET: PlantLists/Details/5
         public ActionResult Details(int? id)
@@ -146,6 +156,48 @@ namespace Grupp29.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // GET: Search
+        public ActionResult Search()
+        {
+            return View();
+        }
+        public ActionResult Index(string searchedPlant)
+        {
+
+            var ctx = new ApplicationDbContext();
+            List<PlantList> list = ctx.PlantLists.Where(m => m.PlantName.Contains(searchedPlant)).ToList();
+
+            List<PlantList> searchList = new List<PlantList>();
+
+            foreach (PlantList plant in list)
+            {
+
+                searchList.Add(new PlantList
+                {
+                    PlantImg = plant.PlantImg,
+                    PlantName = plant.PlantName
+
+                });
+            }
+
+            return View(searchList);
+        }
+
+        public ActionResult ShowPlant(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PlantList plantList = db.PlantLists.Find(id);
+            if (plantList == null)
+            {
+                return HttpNotFound();
+            }
+            return View(plantList);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

@@ -14,8 +14,8 @@
     @Html.ActionLink("Create New", "Create", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" })
 </p>
 
-    var Model1 = Model.OrderByDescending(c => c.PlantId);
-    PlantListsController controller = new PlantListsController();
+    //var Model1 = Model.OrderByDescending(c => c.PlantId);
+    //PlantListsController controller = new PlantListsController();
 
 <table class="table">
 
@@ -38,33 +38,33 @@
         <th></th>
     </tr>
 
-    @foreach (var ListOfPlants in Model1)
+    @foreach (var item in Model)
     {
         <tr>
             <td>
-                @if (ListOfPlants.PlantImg != null)
+                @if (item.PlantImg != null)
                 {
                     <div style="width=100%; height=100%;">
-                        <img src="~/Image/@ListOfPlants.PlantImg" style="border: solid white 40px;" width="40%" height="40%">
+                        <img src="~/Image/@item.PlantImg" style="border: solid white 40px;" width="40%" height="40%">
                     </div>
                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => ListOfPlants.PlantName)
+                @Html.DisplayFor(modelItem => item.PlantName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => ListOfPlants.Description)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => ListOfPlants.WaterNeed)
+                @Html.DisplayFor(modelItem => item.WaterNeed)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => ListOfPlants.Location)
+                @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = ListOfPlants.PlantId }) |
-                @Html.ActionLink("Details", "Details", new { id = ListOfPlants.PlantId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = ListOfPlants.PlantId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.PlantId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PlantId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PlantId })
             </td>
         </tr>
     }

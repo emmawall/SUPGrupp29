@@ -349,6 +349,9 @@
     <Content Include="Views\ForumPostComments\Details.cshtml" />
     <Content Include="Views\ForumPostComments\Edit.cshtml" />
     <Content Include="Views\ForumPostComments\Index.cshtml" />
+    <Content Include="Views\Search\Details.cshtml" />
+    <Content Include="Views\Search\ShowPlant.cshtml" />
+    <Content Include="Views\PlantLists\SearchedPlant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

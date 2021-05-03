@@ -33,7 +33,7 @@
                         <li>
                             @using (Html.BeginForm("Search", "Search", FormMethod.Post))
                             {
-                                @Html.TextBox(" ")
+                                @Html.TextBox("searchedPlant")
                                 <input type="submit" value="Sök" class="btn btn-default" />
                             }
                         </li>

@@ -1,7 +1,113 @@
-﻿
+﻿@model IEnumerable<Grupp29.Models.PlantList>
+
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "Sökresultat";
 }
 
-<h2>Search</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.PlantImg)
+        </th>
 
+        <th>
+            @Html.DisplayNameFor(m => m.PlantName)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.PlantImg)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.PlantName)
+    </td>
+
+    <td>
+        @Html.ActionLink("Visa växt", "ShowPlant", new { id = @item.PlantId })
+    </td>
+</tr>
+    }
+
+</table>
+
+
+
+
+
+@*@using Grupp29.Controllers
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h2>Sökresultat</h2>
+    </div>
+</div>
+<br />
+@if (Request.IsAuthenticated) {
+
+    SearchController controller = new SearchController();
+
+foreach (var ListOfPlants in Model)
+{
+    <div>
+        @{ 
+            var plantId = SearchController.GetIdFromPlant(ListOfPlants.PlantId);
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-2 result">
+            <div class="profile-thumbnail">
+                @{
+                    var imgString = "~/Content/blank-profile-picture.png";
+                    if (ListOfPlants.PlantImg != null)
+                    {
+                        <div style="width=100%; height=100%;">
+                            <img src="~/Image/@ListOfPlants.PlantImg" style="border: solid white 40px;" width="40%" height="40%">
+                        </div>
+                        var imgByte = Convert.ToBase64String(item.Picture);
+                        imgString = String.Format("data:image/gif;base64,{0}", imgByte);
+                    }
+                    else
+                    {
+                        imgString = @Url.Content("~/Content/blank-profile-picture.png");
+                    }
+                }
+                <a href="@Url.Action("Details", "PlantLists", new { plantId = ListOfPlants.PlantId })" title="@ListOfPlants.PlantName">
+                <img src="@ListOfPlants.PlantImg" alt="Profilbild" />
+            </a>
+            </div>
+            <p class="name">
+                <a href="/PlantLists/Details/@plantId">@ListOfPlants.PlantName</a><br>
+            </p>
+                
+        <p>
+            @Html.ActionLink("Läs mer","Details", "PlantLists", new { id = ListOfPlants.PlantId })
+        </p>
+
+        </div>
+
+    </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <h2>
+                            Du måste logga in för att komma åt denna sida!
+                        </h2>
+                    }*@
+
+
+
+
+
+
+
+@*@{
+        ViewBag.Title = "Search";
+    }
+
+    <h2>Search</h2>*@

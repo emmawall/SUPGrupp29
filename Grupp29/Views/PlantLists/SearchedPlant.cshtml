@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Grupp29.Models.PlantList>
+
+@{
+    ViewBag.Title = "Sökresultat";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.PlantImg)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(m => m.PlantName)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlantImg)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PlantName)
+            </td>
+
+            <td>
+                @Html.ActionLink("Visa växt", "Details", new { id = @item.PlantId })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,27 @@
+﻿@model List<Grupp29.Models.PlantList>
+
+@{ 
+    ViewBag.Title = "Visa växter";
+}
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlantImg)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.PlantName)
+        </td>
+
+        <td>
+            @Html.ActionLink("ShowPlant", "ShowPlant")
+        </td>
+
+      
+    </tr>
+    }
+</table>
