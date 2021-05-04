@@ -16,6 +16,42 @@ namespace Grupp29.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PlantLists
+        public static string SelectedFilter { get; set; }
+
+        [HttpPost]
+        public ActionResult SetFilter(String filter)
+        {
+            SelectedFilter = filter;
+            return RedirectToAction("Index");
+        }
+
+        public PlantListsController()
+        {
+        }
+
+        [HttpPost]
+        public List<String> GetCategories()
+        {
+            List<String> namesOfPlantCategory = new List<string>();
+            foreach (PlantCategory Category in db.PlantCategories.ToList())
+            {
+                namesOfPlantCategory.Add(Category.PlantCategoryName);
+            }
+            return namesOfPlantCategory;
+        }
+
+        public ActionResult Index(string searchString)
+        {
+            var plantPosts = from s in db.PlantLists
+                             select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                plantPosts = plantPosts.Where(s => s.PlantCategory.Equals(searchString));
+            }
+            return View(plantPosts);
+
+        }
+
         //public ActionResult Index()
         //{
         //    return View(db.PlantLists.ToList());
@@ -25,7 +61,7 @@ namespace Grupp29.Controllers
 
         //public static PlantList GetIdFromPlant (int plantId)
         //{
-            
+
         //    ApplicationDbContext dbContext = new ApplicationDbContext();
 
         //    return dbContext.PlantLists.Find(plantId);
@@ -49,6 +85,15 @@ namespace Grupp29.Controllers
         // GET: PlantLists/Create
         public ActionResult Create(/*HttpPostedFileBase imageFile*/)
         {
+            var categories = db.PlantCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (PlantCategory ct in categories)
+            {
+                categorylist.Add(ct.PlantCategoryName);
+            }
+            ViewBag.CategoryList = categorylist;
+
+            return View();
             //var filename = "";
 
             //if (imageFile == null)
@@ -76,7 +121,7 @@ namespace Grupp29.Controllers
             //        };
             //    }
 
-                return View();
+            //return View();
         }
 
         // POST: PlantLists/Create
@@ -84,10 +129,19 @@ namespace Grupp29.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PlantId,PlantImg,PlantName,Description,WaterNeed,Location")] PlantList plantList, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "PlantId,PlantImg,PlantName,Description,WaterNeed,Location,PlantCategory")] PlantList plantList, HttpPostedFileBase file)
         {
+            var categories = db.PlantCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (PlantCategory ct in categories)
+            {
+                categorylist.Add(ct.PlantCategoryName);
+            }
+            ViewBag.CategoryList = categorylist;
+        
             if (file != null)
             {
+
                 string fileName = Path.GetFileName(file.FileName);
                 string fileToSave = Path.Combine(Server.MapPath("~/Image"), fileName);
                 file.SaveAs(fileToSave);
@@ -98,6 +152,7 @@ namespace Grupp29.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
 
 
         // GET: PlantLists/Edit/5
@@ -120,7 +175,7 @@ namespace Grupp29.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PlantId,PlantName,Description,WaterNeed,Location")] PlantList plantList)
+        public ActionResult Edit([Bind(Include = "PlantId,PlantName,Description,WaterNeed,Location,PlantCategory")] PlantList plantList)
         {
             if (ModelState.IsValid)
             {
@@ -162,27 +217,27 @@ namespace Grupp29.Controllers
         {
             return View();
         }
-        public ActionResult Index(string searchedPlant)
-        {
+        //public ActionResult Index(string searchedPlant)
+        //{
 
-            var ctx = new ApplicationDbContext();
-            List<PlantList> list = ctx.PlantLists.Where(m => m.PlantName.Contains(searchedPlant)).ToList();
+        //    var ctx = new ApplicationDbContext();
+        //    List<PlantList> list = ctx.PlantLists.Where(m => m.PlantName.Contains(searchedPlant)).ToList();
 
-            List<PlantList> searchList = new List<PlantList>();
+        //    List<PlantList> searchList = new List<PlantList>();
 
-            foreach (PlantList plant in list)
-            {
+        //    foreach (PlantList plant in list)
+        //    {
 
-                searchList.Add(new PlantList
-                {
-                    PlantImg = plant.PlantImg,
-                    PlantName = plant.PlantName
+        //        searchList.Add(new PlantList
+        //        {
+        //            PlantImg = plant.PlantImg,
+        //            PlantName = plant.PlantName
 
-                });
-            }
+        //        });
+        //    }
 
-            return View(searchList);
-        }
+        //    return View(searchList);
+        //}
 
         public ActionResult ShowPlant(int? id)
         {

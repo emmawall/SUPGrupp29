@@ -60,7 +60,7 @@
                 {
 
                     <p>
-                        @Html.ActionLink("Kommentera inlägg", "Details", new { id = ForumPost.Id }) | @Html.ActionLink("Redigera", "Edit", new { id = ForumPost.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = ForumPost.Id })
+                        @Html.ActionLink("Se kommentarer", "Details", new { id = ForumPost.Id }) | @Html.ActionLink("Redigera", "Edit", new { id = ForumPost.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = ForumPost.Id })
                     </p>
                 }
                 @*else if (!ForumPost.Creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
@@ -72,7 +72,7 @@
                 else
                 {
                     <p>
-                        @Html.ActionLink("Se inlägg", "Details", new { id = ForumPost.Id })
+                        @Html.ActionLink("Kommentera inlägg", "Details", new { id = ForumPost.Id })
                     </p>
                 }
 

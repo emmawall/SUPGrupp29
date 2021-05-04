@@ -13,14 +13,22 @@ namespace Grupp29.Models
 
 		public int PlantId { get; set; }
 
+		[Display(Name = "")]
 		public string PlantImg { get; set; }
 
+		[Display(Name = "Namn")]
 		public string PlantName { get; set; }
 
+		[Display(Name = "Beskrivning")]
 		public string Description { get; set; }
 
+		[Display(Name = "Vattenbehov")]
 		public string WaterNeed { get; set; }
 
+		[Display(Name = "Läge")]
 		public string Location { get; set; }
+
+		[Display(Name = "Kategori")]
+		public string PlantCategory { get; set; }
 	}
 }

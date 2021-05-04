@@ -176,6 +176,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyPageController.cs" />
+    <Compile Include="Controllers\PlantCategoriesController.cs" />
     <Compile Include="Controllers\PlantListsController.cs" />
     <Compile Include="Controllers\RoomListsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -250,6 +251,18 @@
     <Compile Include="Migrations\202104290742510_TogBortFranPlantList.Designer.cs">
       <DependentUpon>202104290742510_TogBortFranPlantList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105041104413_LaTillPlantCategory.cs" />
+    <Compile Include="Migrations\202105041104413_LaTillPlantCategory.Designer.cs">
+      <DependentUpon>202105041104413_LaTillPlantCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105041151043_LadeTillPlantCategory.cs" />
+    <Compile Include="Migrations\202105041151043_LadeTillPlantCategory.Designer.cs">
+      <DependentUpon>202105041151043_LadeTillPlantCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105041339107_LaTillDisplayPaPlantList.cs" />
+    <Compile Include="Migrations\202105041339107_LaTillDisplayPaPlantList.Designer.cs">
+      <DependentUpon>202105041339107_LaTillDisplayPaPlantList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Forum.cs" />
@@ -257,6 +270,7 @@
     <Compile Include="Models\ForumPostComment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PlantCategory.cs" />
     <Compile Include="Models\PlantList.cs" />
     <Compile Include="Models\RoomList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -352,6 +366,11 @@
     <Content Include="Views\Search\Details.cshtml" />
     <Content Include="Views\Search\ShowPlant.cshtml" />
     <Content Include="Views\PlantLists\SearchedPlant.cshtml" />
+    <Content Include="Views\PlantCategories\Create.cshtml" />
+    <Content Include="Views\PlantCategories\Delete.cshtml" />
+    <Content Include="Views\PlantCategories\Details.cshtml" />
+    <Content Include="Views\PlantCategories\Edit.cshtml" />
+    <Content Include="Views\PlantCategories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -423,6 +442,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104290742510_TogBortFranPlantList.resx">
       <DependentUpon>202104290742510_TogBortFranPlantList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105041104413_LaTillPlantCategory.resx">
+      <DependentUpon>202105041104413_LaTillPlantCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105041151043_LadeTillPlantCategory.resx">
+      <DependentUpon>202105041151043_LadeTillPlantCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105041339107_LaTillDisplayPaPlantList.resx">
+      <DependentUpon>202105041339107_LaTillDisplayPaPlantList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

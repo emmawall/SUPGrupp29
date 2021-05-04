@@ -50,6 +50,7 @@ namespace Grupp29.Models
 		
         //public System.Data.Entity.DbSet<Grupp29.Models.ForumPostComment> ForumPostComments { get; set; }
         public DbSet<ForumPostComment> ForumPostComments { get; set; }
-	
-    }
+
+		public System.Data.Entity.DbSet<Grupp29.Models.PlantCategory> PlantCategories { get; set; }
+	}
 }

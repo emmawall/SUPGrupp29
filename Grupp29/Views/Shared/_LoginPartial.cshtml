@@ -3,20 +3,80 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hej " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Logga ut</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            @*<li>
+                <a href=' @Url.Action("Index", "Notification", new { userId = @User.Identity.GetUserId() }) ' class="notification">
+                    <span class="noti glyphicon glyphicon-bell" title="Notiser" style="font-size: 20px"></span>
+                    @if (ViewBag.Notifications > 0)
+                    {
+                        <span class="badge" style="background-color: red; margin-left: -5px">@ViewBag.Notifications</span>
+                    }
+
+                </a>
+            </li>*@
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Hej @User.Identity.GetUserName()
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Min sida", "Index", "RoomLists")</li>
+                    @*<li>
+                        @Html.ActionLink("Redigera användarinformation", "EditUserInformation", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
+                    </li>*@
+                    @*<li>
+                        @Html.ActionLink("Byt lösenord", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })*@
+                    @*</li>*@
+                    @*@if (User.IsInRole("Admin"))
+                    {
+                        <li class="divider"></li>
+                        <li>&nbsp&nbsp Administratörsfunktioner &nbsp<span class="glyphicon glyphicon-triangle-bottom" style="font-size: 7px; top: 0px;"></span></li>
+                        <li>@Html.ActionLink("Redigera adminbehörighet", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Redigera publiceringsbehörighet", "UserAuthorization", "Admin")</li>
+                    }*@
+                    <li class="divider"></li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Logga ut</a></li>
+                </ul>
+            </li>
+        </ul>
+
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Registrera konto", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Registrera", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Logga in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+
+
+
+
+
+
+
+@*@using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hej " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Logga ut</a></li>
+        </ul>
+        }
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Registrera konto", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Logga in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }*@
