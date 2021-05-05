@@ -13,7 +13,7 @@ namespace Grupp29.Models
 
 		public int PlantId { get; set; }
 
-		[Display(Name = "")]
+		[Display(Name = "Bild")]
 		public string PlantImg { get; set; }
 
 		[Display(Name = "Namn")]
