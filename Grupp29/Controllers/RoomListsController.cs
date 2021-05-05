@@ -68,16 +68,18 @@ namespace Grupp29.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,listName")] RoomList roomList)
+        public ActionResult Create([Bind(Include = "id,listName,ListCreator,PlantContent")] RoomList roomList)
         {
             if (ModelState.IsValid)
+                
+                roomList.ListCreator = User.Identity.Name;
             {
                 db.RoomLists.Add(roomList);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(roomList);
+            //return View(roomList);
         }
 
         // GET: RoomLists/Edit/5
@@ -100,7 +102,7 @@ namespace Grupp29.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,listName")] RoomList roomList)
+        public ActionResult Edit([Bind(Include = "id,listName,ListCreator,PlantContent")] RoomList roomList)
         {
             if (ModelState.IsValid)
             {

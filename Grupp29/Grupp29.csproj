@@ -263,6 +263,10 @@
     <Compile Include="Migrations\202105041339107_LaTillDisplayPaPlantList.Designer.cs">
       <DependentUpon>202105041339107_LaTillDisplayPaPlantList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105051244313_LaTillIRoomList.cs" />
+    <Compile Include="Migrations\202105051244313_LaTillIRoomList.Designer.cs">
+      <DependentUpon>202105051244313_LaTillIRoomList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Forum.cs" />
@@ -451,6 +455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105041339107_LaTillDisplayPaPlantList.resx">
       <DependentUpon>202105041339107_LaTillDisplayPaPlantList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105051244313_LaTillIRoomList.resx">
+      <DependentUpon>202105051244313_LaTillIRoomList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

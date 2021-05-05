@@ -15,5 +15,9 @@ namespace Grupp29.Models
 
         [Display(Name = "Listnamn")]
         public string listName { get; set; }
+
+        public string ListCreator { get; set; }
+
+        public string PlantContent { get; set; }
     }
 }
