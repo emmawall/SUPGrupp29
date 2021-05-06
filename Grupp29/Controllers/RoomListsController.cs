@@ -60,7 +60,16 @@ namespace Grupp29.Controllers
         // GET: RoomLists/Create
         public ActionResult Create()
         {
+            var listContent = db.PlantLists.ToList();
+            List<string> plantContentList = new List<string>();
+            foreach (PlantList ct in listContent)
+            {
+                plantContentList.Add(ct.PlantName);
+            }
+            ViewBag.PlantContentList = plantContentList;
+
             return View();
+            //return View();
         }
 
         // POST: RoomLists/Create
@@ -70,9 +79,17 @@ namespace Grupp29.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,listName,ListCreator,PlantContent")] RoomList roomList)
         {
-            if (ModelState.IsValid)
-                
-                roomList.ListCreator = User.Identity.Name;
+            //if (ModelState.IsValid)
+
+                var listContent = db.PlantLists.ToList();
+            List<string> plantContentList = new List<string>();
+            foreach (PlantList ct in listContent)
+            {
+                plantContentList.Add(ct.PlantName);
+            }
+            ViewBag.PlantContentList = plantContentList;
+
+            roomList.ListCreator = User.Identity.Name;
             {
                 db.RoomLists.Add(roomList);
                 db.SaveChanges();
