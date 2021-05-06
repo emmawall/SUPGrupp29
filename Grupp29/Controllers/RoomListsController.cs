@@ -156,6 +156,25 @@ namespace Grupp29.Controllers
             return RedirectToAction("Index");
         }
 
+        public List<RoomList> GetRoomListsFromCreator(string creator)
+        {
+
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            var listOfMatchingLists = new List<RoomList>();
+            var listOfAllLists = dbContext.RoomLists.ToList();
+
+            foreach (RoomList roomList in listOfAllLists)
+            {
+                if (roomList.ListCreator.Equals(creator))
+                {
+                    listOfMatchingLists.Add(roomList);
+                }
+
+            }
+            return listOfMatchingLists;
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

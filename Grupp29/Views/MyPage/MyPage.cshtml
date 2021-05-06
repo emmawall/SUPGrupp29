@@ -1,39 +1,100 @@
-﻿
-@model Grupp29.Models.RoomList
+﻿@{
+    ViewBag.Title = "Dina inlägg";
+}
+@using Grupp29.Controllers
+@using Grupp29.Models
+<h2>Mina listor</h2>
+<br />
 
 @{
-    ViewBag.Title = "Välkommen till din sida!";
+    RoomListsController roomListsController = new RoomListsController();
+    string currentlyLoggedIn = User.Identity.Name;
 }
 
-<h2>@ViewBag.Title</h2>
 
-    <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(m => m.listName)
-            </dt>
-            
-            <dd>
-                @Html.DisplayFor(m => m.listName)
-            </dd>
 
-    </dl>
+@*@{ int numberOfLists = 0;}
+@foreach (RoomList list in roomListsController.GetRoomListsFromCreator (currentlyLoggedIn))
+{
+    numberOfLists = numberOfLists + 1;
+}*@
+<!--<h3>Mina listor--> @*(@numberOfLists.ToString()*@@*)*@<!--</h3>-->
+@foreach (RoomList list in roomListsController.GetRoomListsFromCreator(currentlyLoggedIn))
+{
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <p>
-            <a href="/RoomList/CreateList" class="btn btn-info btn-lg">
-                <span class="glyphicon glyphicon-plus"></span> Lägg till
-            </a>
-        </p>
+    var listIdString = list.id.ToString();
+    <div class="formalBlogPost" id=@listIdString>
+
+        <div class="formalBlogPostContent">
+ 
+            <h3>@Html.DisplayFor(modelItem => list.listName)</h3>
+            <h6>@Html.DisplayFor(modelItem => list.PlantContent)</h6>
+            <br />
+        </div>
+        <div class="blogButtons">
+
+            @if (list.ListCreator.Equals(User.Identity.Name))
+            {
+
+                <p>
+                    @Html.ActionLink("Visa lista", "Details", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Redigera", "Edit", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Ta bort", "Delete", "RoomList", new { id = list.id }, null)
+                    @*<span class="authorTime">
+                        @Html.DisplayFor(modelBlogPost => list.ListCreator)
+                    </span>*@
+                </p>
+            }
+            else
+            {
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", new { id = list.id })
+                </p>
+            }
+
+        </div>
     </div>
-</body>
-</html>
+
+}
+
+
+
+
+
+@*@model Grupp29.Models.RoomList
+
+    @{
+        ViewBag.Title = "Välkommen till din sida!";
+    }
+
+    <h2>@ViewBag.Title</h2>
+
+        <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(m => m.listName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(m => m.listName)
+                </dd>
+
+        </dl>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <p>
+                <a href="/RoomList/CreateList" class="btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-plus"></span> Lägg till
+                </a>
+            </p>
+        </div>
+    </body>
+    </html>*@
