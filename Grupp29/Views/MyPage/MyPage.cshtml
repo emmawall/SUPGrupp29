@@ -11,7 +11,9 @@
     string currentlyLoggedIn = User.Identity.Name;
 }
 
-
+<p>
+    @Html.ActionLink("Lägg till lista", "Create", "RoomLists")
+</p>
 
 
 @*@{ int numberOfLists = 0;}
@@ -38,7 +40,7 @@
             {
 
                 <p>
-                    @Html.ActionLink("Visa lista", "Details", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Redigera", "Edit", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Ta bort", "Delete", "RoomList", new { id = list.id }, null)
+                    @Html.ActionLink("Visa lista", "Details", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Redigera", "Edit", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Ta bort", "Delete", "RoomLists", new { id = list.id }, null)
                     @*<span class="authorTime">
                         @Html.DisplayFor(modelBlogPost => list.ListCreator)
                     </span>*@

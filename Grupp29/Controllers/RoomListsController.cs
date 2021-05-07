@@ -93,7 +93,7 @@ namespace Grupp29.Controllers
             {
                 db.RoomLists.Add(roomList);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyPage", "MyPage");
             }
 
             //return View(roomList);
