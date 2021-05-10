@@ -56,6 +56,7 @@ namespace Grupp29.Controllers
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.ChangedAccountInfoSuccess ? "Dina ändringar är nu sparade!"
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
@@ -102,10 +103,10 @@ namespace Grupp29.Controllers
             }
 
             ctx.SaveChanges();
-            TempData["successMessage"] = "Dina ändringar är nu sparade!";
+            //TempData["successMessage"] = "Dina ändringar är nu sparade!";
 
 
-            return RedirectToAction("EditUserInformation");
+            return RedirectToAction("EditUserInformation", new { Message = ManageMessageId.ChangedAccountInfoSuccess });
 
         }
 
@@ -469,7 +470,9 @@ namespace Grupp29.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
-            Error
+            Error,
+            ChangedAccountInfoSuccess
+
         }
 
 #endregion
