@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Grupp29.Models;
+using System.IO;
 
 namespace Grupp29.Controllers
 {
@@ -79,12 +80,29 @@ namespace Grupp29.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult EditInfo(EditInformationViewModel model)
+        public ActionResult EditInfo(EditInformationViewModel model, HttpPostedFileBase ImageFile)
         {
 
             var ctx = new ApplicationDbContext();
             var user = User.Identity.GetUserId();
             var account = ctx.Users.FirstOrDefault(a => a.Id == user);
+
+            var filename = "";
+
+            if (ImageFile == null)
+            {
+
+                filename = account.ProfileImg;
+            }
+
+            else {
+
+                filename = ImageFile.FileName;
+                var filePath = Path.Combine(Server.MapPath("~/ProfileImage"), filename);
+                ImageFile.SaveAs(filePath);
+            }
+
+            account.ProfileImg = filename;
 
             if (!model.DisplayName.Equals(account.DisplayName))
             {
@@ -103,11 +121,11 @@ namespace Grupp29.Controllers
             }
 
             ctx.SaveChanges();
-            //TempData["successMessage"] = "Dina ändringar är nu sparade!";
+			TempData["successMessage"] = "Dina ändringar är nu sparade!";
 
 
-            return RedirectToAction("EditUserInformation", new { Message = ManageMessageId.ChangedAccountInfoSuccess });
-
+			return RedirectToAction("EditUserInformation");
+            
         }
 
         public ActionResult EditUserInformation([Bind(Include = "DisplayName, FirstName, LastName")]EditInformationViewModel model)
@@ -117,8 +135,10 @@ namespace Grupp29.Controllers
             var user = User.Identity.GetUserId();
             var account = ctx.Users.FirstOrDefault(a => a.Id == user);
 
+            edit.DisplayName = account.DisplayName;
             edit.FirstName = account.FirstName;
             edit.LastName = account.LastName;
+            edit.ProfileImg = account.ProfileImg;
 
             if (TempData["successMessage"] != null)
             {

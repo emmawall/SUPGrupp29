@@ -17,5 +17,10 @@ namespace Grupp29.Models
 
         [Display(Name = "Efternamn")]
         public string LastName { get; set; }
+
+        [Display(Name = "Profilbild")]
+        public string ProfileImg { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

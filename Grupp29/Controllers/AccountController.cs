@@ -154,47 +154,41 @@ namespace Grupp29.Controllers
 
 			//if (ImageFile != null)
 			//{
-			//    string fileName = Path.GetFileName(ImageFile.FileName);
-			//    string fileToSave = Path.Combine(Server.MapPath("~/ProfileImage"), fileName);
-			//    ImageFile.SaveAs(fileToSave);
-			//    model.ProfileImg = fileName;
+			//	string fileName = Path.GetFileName(ImageFile.FileName);
+			//	string fileToSave = Path.Combine(Server.MapPath("~/ProfileImage"), fileName);
+			//	ImageFile.SaveAs(fileToSave);
+			//	model.ProfileImg = fileName;
 			//}
 
 			//db.Users.Add(model);
 			//db.SaveChanges();
 			//return RedirectToAction("Index");
 
-			//var filename = "";
+			var filename = "";
 
-   //         if (ImageFile == null)
-   //         {
+			if (ImageFile == null)
+			{
 
-   //             filename = "profilbild.png";
-   //         }
-   //         else
-   //         {
-   //             filename = ImageFile.FileName;
-   //             var filePath = Path.Combine(Server.MapPath("~/ProfileImage"), filename);
+				filename = "profilbild.png";
+			}
+			else
+			{
+				filename = ImageFile.FileName;
+				var filePath = Path.Combine(Server.MapPath("~/ProfileImage"), filename);
 
-   //             ImageFile.SaveAs(filePath);
-   //         }
+				ImageFile.SaveAs(filePath);
+			}
 
-            using (var db = new ApplicationDbContext())
+			using (var db = new ApplicationDbContext())
 
                 if (ModelState.IsValid)
 
                 {
-                    var user = new ApplicationUser { UserName = model.Username, Email = model.Username, DisplayName = model.DisplayName, FirstName = model.FirstName, LastName = model.LastName};
+                    var user = new ApplicationUser { UserName = model.Username, Email = model.Username, DisplayName = model.DisplayName, FirstName = model.FirstName, LastName = model.LastName, ProfileImg = model.ProfileImg};
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                        // Send an email with this link
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                         return RedirectToAction("Index", "Home");
                     }
