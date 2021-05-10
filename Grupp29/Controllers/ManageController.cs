@@ -75,6 +75,64 @@ namespace Grupp29.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditInfo(EditInformationViewModel model)
+        {
+
+            var ctx = new ApplicationDbContext();
+            var user = User.Identity.GetUserId();
+            var account = ctx.Users.FirstOrDefault(a => a.Id == user);
+
+            if (!model.DisplayName.Equals(account.DisplayName))
+            {
+                account.DisplayName = model.DisplayName;
+            }
+
+            if (!model.FirstName.Equals(account.FirstName))
+            {
+                account.FirstName = model.FirstName;
+            }
+
+            if (!model.LastName.Equals(account.LastName))
+            {
+                account.LastName = model.LastName;
+
+            }
+
+            ctx.SaveChanges();
+            TempData["successMessage"] = "Dina ändringar är nu sparade!";
+
+
+            return RedirectToAction("EditUserInformation");
+
+        }
+
+        public ActionResult EditUserInformation([Bind(Include = "DisplayName, FirstName, LastName")]EditInformationViewModel model)
+        {
+            var ctx = new ApplicationDbContext();
+            var edit = new EditInformationViewModel();
+            var user = User.Identity.GetUserId();
+            var account = ctx.Users.FirstOrDefault(a => a.Id == user);
+
+            edit.FirstName = account.FirstName;
+            edit.LastName = account.LastName;
+
+            if (TempData["successMessage"] != null)
+            {
+                ViewBag.Success = TempData["successMessage"].ToString();
+                TempData.Remove("successMessage");
+            }
+
+            return View(edit);
+        }
+
+        public ActionResult ChangeView()
+        {
+            return View();
+        }
+
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]

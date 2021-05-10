@@ -80,7 +80,7 @@ namespace Grupp29.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Lösenordet måste vara minst 2 tecken långt.", MinimumLength = 2)]
+        [StringLength(100, ErrorMessage = "Användarnamnet måste vara minst 2 tecken långt.", MinimumLength = 2)]
         [Display(Name = "Användarnamn")]
         public string DisplayName { get; set; }
 
@@ -88,6 +88,14 @@ namespace Grupp29.Models
         public string ProfileImg { get; set; }
 
         public HttpPostedFileBase ImageFile { get; set; }
+
+        [Required]
+        [Display(Name = "Förname")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Efternamn")]
+        public string LastName { get; set; }
     }
 
     public class ResetPasswordViewModel

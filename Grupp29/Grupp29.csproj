@@ -267,8 +267,21 @@
     <Compile Include="Migrations\202105051244313_LaTillIRoomList.Designer.cs">
       <DependentUpon>202105051244313_LaTillIRoomList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105100715423_LaTillFirstnameLastname.cs" />
+    <Compile Include="Migrations\202105100715423_LaTillFirstnameLastname.Designer.cs">
+      <DependentUpon>202105100715423_LaTillFirstnameLastname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105100742035_LadeTillEditUserVM.cs" />
+    <Compile Include="Migrations\202105100742035_LadeTillEditUserVM.Designer.cs">
+      <DependentUpon>202105100742035_LadeTillEditUserVM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105100751515_LadeTillFirstnameLastnameIM.cs" />
+    <Compile Include="Migrations\202105100751515_LadeTillFirstnameLastnameIM.Designer.cs">
+      <DependentUpon>202105100751515_LadeTillFirstnameLastnameIM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EditInformationViewModel.cs" />
     <Compile Include="Models\Forum.cs" />
     <Compile Include="Models\ForumPostCategory.cs" />
     <Compile Include="Models\ForumPostComment.cs" />
@@ -375,6 +388,8 @@
     <Content Include="Views\PlantCategories\Details.cshtml" />
     <Content Include="Views\PlantCategories\Edit.cshtml" />
     <Content Include="Views\PlantCategories\Index.cshtml" />
+    <Content Include="Views\Manage\EditUserInformation.cshtml" />
+    <Content Include="Views\Manage\ChangeView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -458,6 +473,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105051244313_LaTillIRoomList.resx">
       <DependentUpon>202105051244313_LaTillIRoomList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105100715423_LaTillFirstnameLastname.resx">
+      <DependentUpon>202105100715423_LaTillFirstnameLastname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105100742035_LadeTillEditUserVM.resx">
+      <DependentUpon>202105100742035_LadeTillEditUserVM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105100751515_LadeTillFirstnameLastnameIM.resx">
+      <DependentUpon>202105100751515_LadeTillFirstnameLastnameIM.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
