@@ -1,8 +1,8 @@
 ﻿@model Grupp29.Models.EditInformationViewModel
 
 
-<div class="row">
-    <div class="col-lg-8">
+@*<div class="row">
+    <div class="col-lg-8">*@
         @using (Html.BeginForm("EditInfo", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
         {
             @Html.AntiForgeryToken()
@@ -62,15 +62,15 @@
             </div>
 
         }
-    </div>
-    <div class="col-lg-4">
+    @*</div>*@
+    @*<div class="col-lg-4">
         <div class="profile-picture">
             <span>
                 <img src="~/ProfileImage/@Url.Content(Model.ProfileImg)" alt="ProfilBild" />
             </span>
         </div>
 
-    </div>
+    </div>*@
     <br />
 
     <p style="color: green;">@ViewBag.Success</p>
@@ -79,4 +79,4 @@
     <div>
         @Html.ActionLink("Tillbaka", "ChangeView", "Manage")
     </div>
-</div>
+@*</div>*@
