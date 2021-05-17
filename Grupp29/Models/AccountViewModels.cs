@@ -90,7 +90,7 @@ namespace Grupp29.Models
         public HttpPostedFileBase ImageFile { get; set; }
 
         [Required]
-        [Display(Name = "Förname")]
+        [Display(Name = "Förnamn")]
         public string FirstName { get; set; }
 
         [Required]

@@ -166,25 +166,32 @@ namespace Grupp29.Controllers
 
 			var filename = "";
 
-			if (ImageFile == null)
-			{
+			if (ImageFile == null) {
 
 				filename = "profilbild.png";
-			}
-			else
-			{
+
+			} else {
 				filename = ImageFile.FileName;
 				var filePath = Path.Combine(Server.MapPath("~/ProfileImage"), filename);
 
 				ImageFile.SaveAs(filePath);
-			}
+
+            }
 
 			using (var db = new ApplicationDbContext())
 
                 if (ModelState.IsValid)
 
                 {
-                    var user = new ApplicationUser { UserName = model.Username, Email = model.Username, DisplayName = model.DisplayName, FirstName = model.FirstName, LastName = model.LastName, ProfileImg = filename};
+                    var user = new ApplicationUser 
+                    { 
+                        UserName = model.Username, 
+                        Email = model.Username, 
+                        DisplayName = model.DisplayName, 
+                        FirstName = model.FirstName, 
+                        LastName = model.LastName, 
+                        ProfileImg = filename
+                    };
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
