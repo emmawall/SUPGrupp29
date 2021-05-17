@@ -184,7 +184,7 @@ namespace Grupp29.Controllers
                 if (ModelState.IsValid)
 
                 {
-                    var user = new ApplicationUser { UserName = model.Username, Email = model.Username, DisplayName = model.DisplayName, FirstName = model.FirstName, LastName = model.LastName, ProfileImg = model.ProfileImg};
+                    var user = new ApplicationUser { UserName = model.Username, Email = model.Username, DisplayName = model.DisplayName, FirstName = model.FirstName, LastName = model.LastName, ProfileImg = filename};
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {

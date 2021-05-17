@@ -33,21 +33,21 @@
         var ForumPostIdString = ForumPost.Id.ToString();
         <div class="forumPost" id=@ForumPostIdString>
 
-            <div class="forumPostContent">
-                @{
-                    var time = ForumsController.GetDateFromDateTime(ForumPost.DateTime);
-                    //var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(BlogPost.creator);
-                    var Name = ForumsController.GetNameFromUsername(ForumPost.Creator);
-                }
+    <div class="forumPostContent">
+        @{
+            var time = ForumsController.GetDateFromDateTime(ForumPost.DateTime);
+            var imageSrc = ForumsController.GetProfilePictureFromUsername(ForumPost.Creator);
+            var Name = ForumsController.GetNameFromUsername(ForumPost.Creator);
+        }
 
-                <h3>@Html.DisplayFor(modelItem => ForumPost.Title)<span style="float: right; font-size: 70%;">@time</span></h3>
-                <h6>@Html.DisplayFor(modelItem => ForumPost.Category)</h6>
-                <div class="profile-thumbnail" style="float:right;">
-                    @*<span><img src="~/Image/@imageSrc" style="height:70px; width:70px;"></span>*@
-                    <br />
-                    <p style="margin-left: 10px;">@Name</p>
-                </div>
-                <p style="white-space: pre-line">@Html.DisplayFor(modelItem => ForumPost.Entry)</p>
+        <h3>@Html.DisplayFor(modelItem => ForumPost.Title)<span style="float: right; font-size: 70%;">@time</span></h3>
+        <h6>@Html.DisplayFor(modelItem => ForumPost.Category)</h6>
+        <div class="profile-thumbnail" style="float:right;">
+            <span><img src="~/ProfileImage/@imageSrc" style="height:70px; width:70px;"></span>
+                <br />
+                <p style="margin-left: 10px;">@Name</p>
+        </div>
+        <p style="white-space: pre-line">@Html.DisplayFor(modelItem => ForumPost.Entry)</p>
 
                 <br />
             </div>
