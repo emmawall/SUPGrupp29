@@ -3,6 +3,11 @@
 }
 @using Grupp29.Controllers
 @using Grupp29.Models
+
+<link href="~/Css/StyleFF.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <h2>Mina listor</h2>
 <br />
 
@@ -17,10 +22,10 @@
 
 
 @*@{ int numberOfLists = 0;}
-@foreach (RoomList list in roomListsController.GetRoomListsFromCreator (currentlyLoggedIn))
-{
-    numberOfLists = numberOfLists + 1;
-}*@
+    @foreach (RoomList list in roomListsController.GetRoomListsFromCreator (currentlyLoggedIn))
+    {
+        numberOfLists = numberOfLists + 1;
+    }*@
 <!--<h3>Mina listor--> @*(@numberOfLists.ToString()*@@*)*@<!--</h3>-->
 @foreach (RoomList list in roomListsController.GetRoomListsFromCreator(currentlyLoggedIn))
 {
@@ -29,7 +34,7 @@
     <div class="formalBlogPost" id=@listIdString>
 
         <div class="formalBlogPostContent">
- 
+
             <h3>@Html.DisplayFor(modelItem => list.listName)</h3>
             <h6>@Html.DisplayFor(modelItem => list.PlantContent)</h6>
             <br />
@@ -42,8 +47,8 @@
                 <p>
                     @Html.ActionLink("Visa lista", "Details", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Redigera", "Edit", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Ta bort", "Delete", "RoomLists", new { id = list.id }, null)
                     @*<span class="authorTime">
-                        @Html.DisplayFor(modelBlogPost => list.ListCreator)
-                    </span>*@
+                            @Html.DisplayFor(modelBlogPost => list.ListCreator)
+                        </span>*@
                 </p>
             }
             else

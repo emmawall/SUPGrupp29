@@ -1,0 +1,18 @@
+﻿body {
+    background-image: url(Blomma.jpg);
+    background-size: 3000px 3000px;
+    color: black;
+}
+
+.row h4{
+    color: black;
+}
+
+.row p{
+    color: black;
+}
+
+.row button{
+    color: forestgreen;
+}
+

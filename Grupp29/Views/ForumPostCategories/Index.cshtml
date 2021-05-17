@@ -4,6 +4,8 @@
     ViewBag.Title = "Kategorier";
 }
 
+<link href="~/Css/StyleFAQ.css" rel="stylesheet" />
+
 <h2>Kategorier</h2>
 
 <p>
@@ -11,16 +13,17 @@
 </p>
 <table class="table">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Ta bort", "Delete", new { id = item.CategoryName})
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Ta bort", "Delete", new { id = item.CategoryName })
+            </td>
+        </tr>
+    }
 
 </table>
 <div>

@@ -1,0 +1,15 @@
+﻿body {
+    background-image: url(Blomma.jpg);
+    background-size: cover;
+    color: black;
+}
+
+.jumbotron {
+    color: black;
+    background-image: url(original.jpg);
+    background-size: cover;
+}
+
+.row p{
+    color: black;
+}

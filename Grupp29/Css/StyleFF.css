@@ -1,0 +1,14 @@
+﻿body {
+    background-image: url(Blomma.jpg);
+    background-size: cover;
+    color: black;
+}
+
+
+.h2 {
+    color: black;
+}
+
+.col-md-6 p{
+    color: black;
+}
