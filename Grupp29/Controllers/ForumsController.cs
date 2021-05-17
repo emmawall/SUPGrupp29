@@ -37,21 +37,23 @@ namespace Grupp29.Controllers
             return dbContext.Fora.Find(id);
         }
 
-        //public static string GetProfilePictureFromUsername(string userName)
-        //{
-        //    string image = "";
-        //    ApplicationDbContext dbContext = new ApplicationDbContext();
-        //    foreach (ApplicationUser user in dbContext.Users.ToList())
-        //    {
+        //getprofilepicfrom var kommenterad förut
 
-        //        if (user.UserName.Equals(userName))
-        //        {
-        //            image = user.Img;
-        //        }
-        //    }
-        //    return image;
+        public static string GetProfilePictureFromUsername(string userName)
+        {
+            string image = "";
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            foreach (ApplicationUser user in dbContext.Users.ToList())
+            {
 
-        //}
+                if (user.UserName.Equals(userName))
+                {
+                    image = user.ProfileImg;
+                }
+            }
+            return image;
+
+        }
 
         public static string GetNameFromUsername(string userName)
         {
