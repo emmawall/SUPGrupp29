@@ -38,6 +38,9 @@
                 @Html.DisplayNameFor(model => model.PlantImg)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.ImgDesc)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.PlantName)
             </th>
             <th>
@@ -65,6 +68,9 @@
                     <img src="~/Image/@item.PlantImg" style="border: solid white 40px;" width="40%" height="40%">
                 </div>
             }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImgDesc)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PlantName)

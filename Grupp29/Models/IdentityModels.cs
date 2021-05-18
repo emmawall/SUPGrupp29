@@ -59,5 +59,7 @@ namespace Grupp29.Models
 		public System.Data.Entity.DbSet<Grupp29.Models.PlantCategory> PlantCategories { get; set; }
 
         //public System.Data.Entity.DbSet<Grupp29.Models.ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<PlantRoom> PlantRooms { get; set; }
     }
 }

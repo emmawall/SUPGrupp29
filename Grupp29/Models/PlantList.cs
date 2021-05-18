@@ -16,6 +16,9 @@ namespace Grupp29.Models
 		[Display(Name = "Bild")]
 		public string PlantImg { get; set; }
 
+		[Display(Name = "Syntolkning")]
+		public string ImgDesc { get; set; }
+
 		[Display(Name = "Namn")]
 		public string PlantName { get; set; }
 
