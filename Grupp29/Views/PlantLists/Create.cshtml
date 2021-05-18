@@ -18,8 +18,18 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
+        @Html.LabelFor(model => model.PlantCategory, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="file" id="file" name="file">
+            @Html.DropDownListFor(model => model.PlantCategory, new SelectList(ViewBag.CategoryList))
+            @Html.ValidationMessageFor(model => model.PlantCategory, "", new { @class = "text-danger" })
+            @Html.ActionLink("Skapa ny kategori", "Create", "PlantCategories")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.LabelFor(m => m.PlantImg, htmlAttributes: new { @class = "control-label col-md-2" })
+            <input type="file" id="ImageFile" name="ImageFile" class="form-control" />
         </div>
     </div>
 
@@ -31,15 +41,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PlantCategory, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.PlantCategory, new SelectList(ViewBag.CategoryList))
-            @Html.ValidationMessageFor(model => model.PlantCategory, "", new { @class = "text-danger" })
-            @Html.ActionLink("Skapa ny kategori", "Create", "PlantCategories")
-
-        </div>
-    </div>
     <div class="form-group">
         @Html.LabelFor(model => model.PlantName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
