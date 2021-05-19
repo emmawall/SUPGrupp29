@@ -9,12 +9,62 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4" style="padding-bottom: 100px">
+    <div class="col-md-4">
         <p>
             På den här sidan kan du hitta information om växter.
             Om du skapar ett konto kan du lägga till de växter du har hemma och få koll på hur du ska sköta dem.
         </p>
         @Html.ActionLink("Registrera konto", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-  
+
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+                <div id="carousel" class="carousel slide">
+
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel" data-slide-to="1"></li>
+                        <li data-target="#carousel" data-slide-to="2"></li>
+                        <li data-target="#carousel" data-slide-to="3"></li>
+
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img style="width: 200px; height: 200px;" src="~/SlideShowImg/pelargon.jpg" />
+                        </div>
+
+                        <div class="item">
+                            <img style="width: 200px; height: 200px;" src="~/SlideShowImg/hortensia.jpg" />
+                        </div>
+
+                        <div class="item">
+                            <img style="width: 200px; height: 200px;" src="~/SlideShowImg/murgröna.jpg" />
+                        </div>
+
+                        <div class="item">
+                            <img style="width: 200px; height: 200px;" src="~/SlideShowImg/penseer.jpg" />
+                        </div>
+                    </div>
+
+                    <a href="#carousel" class="left carousel-control" data-slide="prev">
+                        <span class=" icon-prev"></span>
+                    </a>
+                    <a href="#carousel" class="right carousel-control" data-slide="next">
+                        <span class=" icon-next"></span>
+                    </a>
+
+                    <script>
+                        $("#carousel").carousel(
+                            {
+                                interval: 2000
+                            }
+                        );
+                    </script>
+
+                </div>
+        </div>
     </div>
 </div>
