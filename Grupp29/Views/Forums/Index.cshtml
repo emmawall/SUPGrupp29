@@ -12,7 +12,7 @@
 {
     <h2>Forum</h2>
     <p>
-        @Html.ActionLink("Skapa nytt inlägg", "Create")
+        @Html.ActionLink("Skapa nytt inlägg", "Create", null, new { @style = "font-size:larger;color: darkblue;" })
     </p>
 
     var Model1 = Model.OrderByDescending(c => c.Id);
@@ -63,7 +63,7 @@
                 {
 
                     <p>
-                        @Html.ActionLink("Se kommentarer", "Details", new { id = ForumPost.Id }) | @Html.ActionLink("Redigera", "Edit", new { id = ForumPost.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = ForumPost.Id })
+                        @Html.ActionLink("Se kommentarer", "Details", new { id = ForumPost.Id }, new { @style = "font-size:larger;color: darkblue;" }) | @Html.ActionLink("Redigera", "Edit", new { id = ForumPost.Id }, new { @style = "font-size:larger;color: darkblue;" }) | @Html.ActionLink("Ta bort", "Delete", new { id = ForumPost.Id }, new { @style = "font-size:larger;color: darkblue;" })
                     </p>
                 }
                 @*else if (!ForumPost.Creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
@@ -75,7 +75,7 @@
                 else
                 {
                     <p>
-                        @Html.ActionLink("Kommentera inlägg", "Details", new { id = ForumPost.Id })
+                        @Html.ActionLink("Kommentera inlägg", "Details", new { id = ForumPost.Id }, new { @style = "font-size:larger;color: darkblue;" })
                     </p>
                 }
 

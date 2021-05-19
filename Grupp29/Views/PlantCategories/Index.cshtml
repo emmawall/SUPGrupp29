@@ -4,26 +4,28 @@
     ViewBag.Title = "Index";
 }
 
-    <link href="~/Css/StyleFF.css" rel="stylesheet" />
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
+
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @style = "font-size:larger;color: darkblue;" })
 </p>
 <table class="table">
     <tr>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PlantCategoryName }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PlantCategoryName }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PlantCategoryName })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PlantCategoryName }, new { @style = "font-size:larger;color: darkblue;" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PlantCategoryName }, new { @style = "font-size:larger;color: darkblue;" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PlantCategoryName }, new { @style = "font-size:larger;color: darkblue;" })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -6,18 +6,19 @@
 
 }
 
-<link href="~/Css/StyleFF.css" rel="stylesheet" />
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
+
 
 <h3>Min lista</h3>
 
 @*@using Grupp29.Controllers*@
- @{  var isLoggedIn = Request.IsAuthenticated;
-         var userId = isLoggedIn ? User.Identity?.GetUserId() : null;
-     }
-   
+@{ var isLoggedIn = Request.IsAuthenticated;
+    var userId = isLoggedIn ? User.Identity?.GetUserId() : null;
+}
+
 @*<p>
-    @Html.ActionLink("Lägg till lista", "Create")
-</p>*@
+        @Html.ActionLink("Lägg till lista", "Create")
+    </p>*@
 <table class="table">
     <tr>
         <th>
@@ -33,20 +34,20 @@
                 @Html.DisplayFor(modelItem => item.listName)
             </td>
             <td>
-                @Html.ActionLink("Redigera", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Redigera", "Edit", new { id = item.id }, new { @style = "font-size:larger;color: darkblue;" }) |
                 @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
-                @Html.ActionLink("Ta bort", "Delete", new { id = item.id })
+                @Html.ActionLink("Ta bort", "Delete", new { id = item.id }, new { @style = "font-size:larger;color: darkblue;" })
             </td>
         </tr>
 
 
     }
 </table>
-    @*}
-    else
-    {
-<h1>Du måste logga in för att komma åt denna sida!</h1>
-    }*@
+@*}
+        else
+        {
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+        }*@
 
 
 

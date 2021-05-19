@@ -1,14 +1,15 @@
-﻿
+﻿<link href="~/Css/StyleManage.css" rel="stylesheet" />
+
 <h2>Ändra dina kontouppgifter</h2>
 
 <br />
 
 <div>
-    @Html.ActionLink("Ändra uppgifter", "EditUserInformation", "Manage")
+    @Html.ActionLink("Ändra uppgifter", "EditUserInformation", "Manage", null, new { @style = "font-size:larger;color: darkblue;" })
 </div>
 
 <br />
 
 <div>
-    @Html.ActionLink("Ändra lösenord", "ChangePassword", "Manage")
+    @Html.ActionLink("Ändra lösenord", "ChangePassword", "Manage", null, new { @style = "font-size:larger;color: darkblue;" })
 </div>
