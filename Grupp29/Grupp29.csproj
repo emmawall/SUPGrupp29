@@ -168,7 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\FAQController.cs" />
+    <Compile Include="Controllers\FAQsController.cs" />
     <Compile Include="Controllers\ForumPostCategoriesController.cs" />
     <Compile Include="Controllers\ForumPostCommentsController.cs" />
     <Compile Include="Controllers\ForumsController.cs" />
@@ -178,8 +178,10 @@
     <Compile Include="Controllers\MyPageController.cs" />
     <Compile Include="Controllers\PlantCategoriesController.cs" />
     <Compile Include="Controllers\PlantListsController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\RoomListsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -291,9 +293,18 @@
     <Compile Include="Migrations\202105171313220_LaTillImgDesc.Designer.cs">
       <DependentUpon>202105171313220_LaTillImgDesc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105191306214_LadeTillRoles.cs" />
+    <Compile Include="Migrations\202105191306214_LadeTillRoles.Designer.cs">
+      <DependentUpon>202105191306214_LadeTillRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105191351131_LaTillFAQ.cs" />
+    <Compile Include="Migrations\202105191351131_LaTillFAQ.Designer.cs">
+      <DependentUpon>202105191351131_LaTillFAQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EditInformationViewModel.cs" />
+    <Compile Include="Models\FAQ.cs" />
     <Compile Include="Models\Forum.cs" />
     <Compile Include="Models\ForumPostCategory.cs" />
     <Compile Include="Models\ForumPostComment.cs" />
@@ -379,7 +390,6 @@
     <Content Include="Views\Manage\ChangeEmail.cshtml" />
     <Content Include="Views\MyPage\MyPage.cshtml" />
     <Content Include="Views\FunFacts\FunFacts.cshtml" />
-    <Content Include="Views\FAQ\FAQ.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\RoomLists\Create.cshtml" />
     <Content Include="Views\RoomLists\Delete.cshtml" />
@@ -416,12 +426,20 @@
     <Content Include="Views\PlantCategories\Index.cshtml" />
     <Content Include="Views\Manage\EditUserInformation.cshtml" />
     <Content Include="Views\Manage\ChangeView.cshtml" />
+    <Content Include="Views\Account\AddRole.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\FAQs\Create.cshtml" />
+    <Content Include="Views\FAQs\Delete.cshtml" />
+    <Content Include="Views\FAQs\Details.cshtml" />
+    <Content Include="Views\FAQs\Edit.cshtml" />
+    <Content Include="Views\FAQs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ForumPostUploads\" />
     <Folder Include="Image\" />
     <Folder Include="ProfileImage\" />
+    <Folder Include="Views\Role\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -517,6 +535,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105171313220_LaTillImgDesc.resx">
       <DependentUpon>202105171313220_LaTillImgDesc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105191306214_LadeTillRoles.resx">
+      <DependentUpon>202105191306214_LadeTillRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105191351131_LaTillFAQ.resx">
+      <DependentUpon>202105191351131_LaTillFAQ.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Grupp29.Models;
 using System.IO;
+using Microsoft.Ajax.Utilities;
 
 namespace Grupp29.Controllers
 {
@@ -20,8 +21,10 @@ namespace Grupp29.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        ApplicationDbContext context;
         public AccountController()
         {
+            context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -77,7 +80,7 @@ namespace Grupp29.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -141,6 +144,8 @@ namespace Grupp29.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+
             return View();
         }
 
@@ -151,18 +156,6 @@ namespace Grupp29.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase ImageFile)
         {
-
-			//if (ImageFile != null)
-			//{
-			//	string fileName = Path.GetFileName(ImageFile.FileName);
-			//	string fileToSave = Path.Combine(Server.MapPath("~/ProfileImage"), fileName);
-			//	ImageFile.SaveAs(fileToSave);
-			//	model.ProfileImg = fileName;
-			//}
-
-			//db.Users.Add(model);
-			//db.SaveChanges();
-			//return RedirectToAction("Index");
 
 			var filename = "";
 
@@ -185,8 +178,8 @@ namespace Grupp29.Controllers
                 {
                     var user = new ApplicationUser 
                     { 
-                        UserName = model.Username, 
-                        Email = model.Username, 
+                        UserName = model.UserName, 
+                        Email = model.UserName, 
                         DisplayName = model.DisplayName, 
                         FirstName = model.FirstName, 
                         LastName = model.LastName, 
@@ -197,15 +190,21 @@ namespace Grupp29.Controllers
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
+                        await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+
                         return RedirectToAction("Index", "Home");
                     }
+                    ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+
                     AddErrors(result);
                 }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+             
 
+       
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
