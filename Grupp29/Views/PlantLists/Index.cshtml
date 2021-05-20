@@ -5,7 +5,8 @@
 }
 @using Grupp29.Controllers
 
-    <link href="~/Css/StyleFF.css" rel="stylesheet" />
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
+
 
 @if (Request.IsAuthenticated)
 {
@@ -57,39 +58,39 @@
 
         @foreach (var item in Model1)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlantCategory)
-        </td>
-        <td>
-            @if (item.PlantImg != null)
-            {
-                <div style="width=100%; height=100%;">
-                    <img src="~/Image/@item.PlantImg" style="border: solid white 40px;" width="40%" height="40%">
-                </div>
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImgDesc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlantName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WaterNeed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @*@Html.ActionLink("Redigera", "Edit", new { id = item.PlantId }) |*@
-            @Html.ActionLink("Detaljer", "Details", new { id = item.PlantId }) |
-            @Html.ActionLink("Ta bort", "Delete", new { id = item.PlantId })
-        </td>
-    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlantCategory)
+                </td>
+                <td>
+                    @if (item.PlantImg != null)
+                    {
+                        <div style="width=100%; height=100%;">
+                            <img src="~/Image/@item.PlantImg" style="border: solid white 40px;" width="40%" height="40%">
+                        </div>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImgDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlantName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WaterNeed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Redigera", "Edit", new { id = item.PlantId }) |*@
+                    @Html.ActionLink("Detaljer", "Details", new { id = item.PlantId }, new { @style = "font-size:larger;color: darkblue;" }) |
+                    @Html.ActionLink("Ta bort", "Delete", new { id = item.PlantId }, new { @style = "font-size:larger;color: darkblue;" })
+                </td>
+            </tr>
         }
 
     </table>

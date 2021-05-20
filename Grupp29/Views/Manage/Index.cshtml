@@ -17,24 +17,24 @@
             [
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                @Html.ActionLink("Change your password", "ChangePassword",null, new { @style = "font-size:larger;color: darkblue;" })
             }
             else
             {
-                @Html.ActionLink("Create", "SetPassword")
+                @Html.ActionLink("Create", "SetPassword", null, new { @style = "font-size:larger;color: darkblue;" })
             }
             ]
         </dd>
 
         <dt>Ändra email</dt>
         <dd>
-            @Html.ActionLink("Ändra emailadress", "ChangeEmail")
+            @Html.ActionLink("Ändra emailadress", "ChangeEmail", null, new { @style = "font-size:larger;color: darkblue;" })
         </dd>
 
         <dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
+            @Html.ActionLink("Manage", "ManageLogins", null, new { @style = "font-size:larger;color: darkblue;" }) ]
         </dd>
         @*
             Phone Numbers can used as a second factor of verification in a two-factor authentication system.

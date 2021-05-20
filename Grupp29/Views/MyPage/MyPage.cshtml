@@ -4,9 +4,7 @@
 @using Grupp29.Controllers
 @using Grupp29.Models
 
-<link href="~/Css/StyleFF.css" rel="stylesheet" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
 
 <h2>Mina listor</h2>
 <br />
@@ -17,7 +15,7 @@
 }
 
 <p>
-    @Html.ActionLink("Lägg till lista", "Create", "RoomLists")
+    @Html.ActionLink("Lägg till lista", "Create", "RoomLists", null, new { @style = "font-size:larger;color: darkblue;" })
 </p>
 
 
@@ -45,7 +43,7 @@
             {
 
                 <p>
-                    @Html.ActionLink("Visa lista", "Details", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Redigera", "Edit", "RoomLists", new { id = list.id }, null) | @Html.ActionLink("Ta bort", "Delete", "RoomLists", new { id = list.id }, null)
+                    @Html.ActionLink("Visa lista", "Details", "RoomLists", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" }) | @Html.ActionLink("Redigera", "Edit", "RoomLists", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" }) | @Html.ActionLink("Ta bort", "Delete", "RoomLists", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" })
                     @*<span class="authorTime">
                             @Html.DisplayFor(modelBlogPost => list.ListCreator)
                         </span>*@
@@ -54,7 +52,7 @@
             else
             {
                 <p>
-                    @Html.ActionLink("Se inlägg", "Details", new { id = list.id })
+                    @Html.ActionLink("Se inlägg", "Details", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" })
                 </p>
             }
 

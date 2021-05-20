@@ -4,15 +4,15 @@
     ViewBag.Title = "Create";
 }
 
-    <link href="~/Css/StyleFF.css" rel="stylesheet" />
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>PlantCategory</h4>
         <hr />
@@ -34,7 +34,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", null, new { @style = "font-size:larger;color: darkblue;" })
 </div>
 
 @section Scripts {
