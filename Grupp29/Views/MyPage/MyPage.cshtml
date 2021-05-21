@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Dina inlägg";
+    ViewBag.Title = "Mina växter";
 }
 @using Grupp29.Controllers
 @using Grupp29.Models
@@ -29,15 +29,15 @@
 {
 
     var listIdString = list.id.ToString();
-    <div class="formalBlogPost" id=@listIdString>
+    <div class="" id=@listIdString>
 
-        <div class="formalBlogPostContent">
+        <div class="">
 
             <h3>@Html.DisplayFor(modelItem => list.listName)</h3>
             <h6>@Html.DisplayFor(modelItem => list.PlantContent)</h6>
             <br />
         </div>
-        <div class="blogButtons">
+        <div class="">
 
             @if (list.ListCreator.Equals(User.Identity.Name))
             {
