@@ -1,13 +1,14 @@
 ﻿body {
-    background-image: url(Roas.jpg);
+    background-image: url(Plants1.jpg);
     background-size: cover;
     color: black;
 }
 
 .jumbotron {
-    color: black;
-    background-image: url(original.jpg);
-    background-size: cover;
+    /*   color: black;
+    background-image: url('Plants1 (3).jpg');
+    background-size: cover;*/
+    background: rgba(181, 219, 114, 0.1);
 }
 
 .row p{

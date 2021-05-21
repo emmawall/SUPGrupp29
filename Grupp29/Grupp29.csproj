@@ -314,6 +314,7 @@
     <Content Include="Content\ListView.css" />
     <Content Include="Css\Blomma.jpg" />
     <Content Include="Css\original.jpg" />
+    <Content Include="Css\Plants1.jpg" />
     <Content Include="Css\Roas.jpg" />
     <Content Include="Css\StyleFAQ.css" />
     <Content Include="Css\StyleForums.css" />
