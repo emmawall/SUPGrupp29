@@ -10,107 +10,107 @@ using Grupp29.Models;
 
 namespace Grupp29.Controllers
 {
-    public class ForumPostCategoriesController : Controller
+    public class FAQsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ForumPostCategories
+        // GET: FAQs
         public ActionResult Index()
         {
-            return View(db.ForumPostCategories.ToList());
+            return View(db.FAQs.ToList());
         }
 
-        // GET: ForumPostCategories/Details/5
-        public ActionResult Details(string id)
+        // GET: FAQs/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ForumPostCategory forumPostCategory = db.ForumPostCategories.Find(id);
-            if (forumPostCategory == null)
+            FAQ fAQ = db.FAQs.Find(id);
+            if (fAQ == null)
             {
                 return HttpNotFound();
             }
-            return View(forumPostCategory);
+            return View(fAQ);
         }
 
-        // GET: ForumPostCategories/Create
+        // GET: FAQs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ForumPostCategories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // POST: FAQs/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CategoryName")] ForumPostCategory forumPostCategory)
+        public ActionResult Create([Bind(Include = "Id,Sender,Message")] FAQ fAQ)
         {
             if (ModelState.IsValid)
             {
-                db.ForumPostCategories.Add(forumPostCategory);
+                db.FAQs.Add(fAQ);
                 db.SaveChanges();
-                return RedirectToAction("Create", "Forums");
+                return RedirectToAction("Create");
             }
 
-            return View(forumPostCategory);
+            return View(fAQ);
         }
 
-        // GET: ForumPostCategories/Edit/5
-        public ActionResult Edit(string id)
+        // GET: FAQs/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ForumPostCategory forumPostCategory = db.ForumPostCategories.Find(id);
-            if (forumPostCategory == null)
+            FAQ fAQ = db.FAQs.Find(id);
+            if (fAQ == null)
             {
                 return HttpNotFound();
             }
-            return View(forumPostCategory);
+            return View(fAQ);
         }
 
-        // POST: ForumPostCategories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // POST: FAQs/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CategoryName")] ForumPostCategory forumPostCategory)
+        public ActionResult Edit([Bind(Include = "Id,Sender,Message")] FAQ fAQ)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(forumPostCategory).State = EntityState.Modified;
+                db.Entry(fAQ).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(forumPostCategory);
+            return View(fAQ);
         }
 
-        // GET: ForumPostCategories/Delete/5
-        public ActionResult Delete(string id)
+        // GET: FAQs/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ForumPostCategory forumPostCategory = db.ForumPostCategories.Find(id);
-            if (forumPostCategory == null)
+            FAQ fAQ = db.FAQs.Find(id);
+            if (fAQ == null)
             {
                 return HttpNotFound();
             }
-            return View(forumPostCategory);
+            return View(fAQ);
         }
 
-        // POST: ForumPostCategories/Delete/5
+        // POST: FAQs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            ForumPostCategory forumPostCategory = db.ForumPostCategories.Find(id);
-            db.ForumPostCategories.Remove(forumPostCategory);
+            FAQ fAQ = db.FAQs.Find(id);
+            db.FAQs.Remove(fAQ);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
