@@ -52,7 +52,7 @@ namespace Grupp29.Controllers
             {
                 db.PlantCategories.Add(plantCategory);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "PlantLists");
             }
 
             return View(plantCategory);

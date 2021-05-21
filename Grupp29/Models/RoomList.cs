@@ -18,6 +18,7 @@ namespace Grupp29.Models
 
         public string ListCreator { get; set; }
 
+        [Display(Name = "Välj växt")]
         public string PlantContent { get; set; }
     }
 }

@@ -6,16 +6,16 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            @*<li>
-                <a href=' @Url.Action("Index", "Notification", new { userId = @User.Identity.GetUserId() }) ' class="notification">
+            <li>
+                <a href=' @Url.Action("", "", new { userId = @User.Identity.GetUserId() }) ' class="notification">
                     <span class="noti glyphicon glyphicon-bell" title="Notiser" style="font-size: 20px"></span>
-                    @if (ViewBag.Notifications > 0)
+                    @*@if (ViewBag.Notifications > 0)
                     {
                         <span class="badge" style="background-color: red; margin-left: -5px">@ViewBag.Notifications</span>
-                    }
+                    }*@
 
                 </a>
-            </li>*@
+            </li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     Hej @User.Identity.GetUserName()
@@ -23,7 +23,10 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>@Html.ActionLink("Mina växter", "MyPage", "MyPage")</li>
-                    <li>@Html.ActionLink("Redigera uppgifter", "ChangeView", "Manage")</li>
+                    <li>@Html.ActionLink("Mina vinster", "MyRewards", "MyRewards")</li>
+                    <li>@Html.ActionLink("Redigera uppgifter", "EditUserInformation", "Manage")</li>
+                    <li>@Html.ActionLink("Ändra lösenord", "ChangePassword", "Manage")</li>
+
                     @*<li>
             @Html.ActionLink("Redigera användarinformation", "EditUserInformation", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
         </li>*@

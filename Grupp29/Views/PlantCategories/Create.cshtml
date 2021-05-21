@@ -6,7 +6,7 @@
 
 <link href="~/Css/StyleManage.css" rel="stylesheet" />
 
-<h2>Create</h2>
+<h2>Skapa ny kategori</h2>
 
 
 @using (Html.BeginForm())
@@ -14,7 +14,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>PlantCategory</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -27,14 +26,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Skapa" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", null, new { @style = "font-size:larger;color: darkblue;" })
+    @Html.ActionLink("Tillbaka", "Create", "PlantLists", null, new { @style = "font-size:larger;color: darkblue;" })
 </div>
 
 @section Scripts {
