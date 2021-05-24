@@ -1,0 +1,9 @@
+﻿body {
+    background-color: antiquewhite;
+}
+
+.jumbotron{
+    background-image: url(Blomma.jpg);
+    color: black;
+}
+

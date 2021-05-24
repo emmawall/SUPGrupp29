@@ -1,0 +1,14 @@
+﻿body {
+    background-size: cover;
+    color: black;
+    background-image: url(Roas.jpg);
+}
+
+
+.h2 {
+    color: black;
+}
+
+.col-md-6 p{
+    color: black;
+}
