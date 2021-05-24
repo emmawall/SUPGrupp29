@@ -52,20 +52,6 @@ namespace Grupp29.Controllers
 
         }
 
-        //public ActionResult Index()
-        //{
-        //    return View(db.PlantLists.ToList());
-        //}
-
-
-
-        //public static PlantList GetIdFromPlant (int plantId)
-        //{
-
-        //    ApplicationDbContext dbContext = new ApplicationDbContext();
-
-        //    return dbContext.PlantLists.Find(plantId);
-        //}
 
         // GET: PlantLists/Details/5
         public ActionResult Details(int? id)
@@ -83,7 +69,7 @@ namespace Grupp29.Controllers
         }
 
         // GET: PlantLists/Create
-        public ActionResult Create(/*HttpPostedFileBase imageFile*/)
+        public ActionResult Create()
         {
             var categories = db.PlantCategories.ToList();
             List<string> categorylist = new List<string>();
@@ -94,34 +80,6 @@ namespace Grupp29.Controllers
             ViewBag.CategoryList = categorylist;
 
             return View();
-            //var filename = "";
-
-            //if (imageFile == null)
-            //{
-            //    filename = "DefaultPlant.png";
-
-            //} else {
-            //    filename = imageFile.FileName;
-            //    var filePath = Path.Combine(Server.MapPath("~/Image"), filename);
-
-            //    imageFile.SaveAs(filePath);
-            //}
-
-            //using (var db = new ApplicationDbContext())
-
-            //    if (ModelState.IsValid)
-            //    {
-            //        var plant = new PlantList
-            //        {
-            //            PlantImg = model.PlantImg,
-            //            PlantName = model.PlantName,
-            //            Description = model.Description,
-            //            WaterNeed = model.WaterNeed,
-            //            Location = model.Location
-            //        };
-            //    }
-
-            //return View();
         }
 
         // POST: PlantLists/Create
@@ -217,27 +175,6 @@ namespace Grupp29.Controllers
         {
             return View();
         }
-        //public ActionResult Index(string searchedPlant)
-        //{
-
-        //    var ctx = new ApplicationDbContext();
-        //    List<PlantList> list = ctx.PlantLists.Where(m => m.PlantName.Contains(searchedPlant)).ToList();
-
-        //    List<PlantList> searchList = new List<PlantList>();
-
-        //    foreach (PlantList plant in list)
-        //    {
-
-        //        searchList.Add(new PlantList
-        //        {
-        //            PlantImg = plant.PlantImg,
-        //            PlantName = plant.PlantName
-
-        //        });
-        //    }
-
-        //    return View(searchList);
-        //}
 
         public ActionResult ShowPlant(int? id)
         {

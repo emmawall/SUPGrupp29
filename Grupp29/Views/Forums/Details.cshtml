@@ -60,9 +60,6 @@
             var commentTime = ForumsController.GetDateFromDateTime(comment.DateTime);
             var Names = ForumsController.GetNameFromUsername(comment.Author);
     <div class="forumPostComment" id="@Model.Id">
-        @*<p style="margin-left: 10px;">@Names</p>*@ 
-
-
         <p>@comment.CommentText</p>
         <p class="forumPostCommentAuthor">@Names | @commentTime</p>
     </div>

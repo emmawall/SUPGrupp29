@@ -20,15 +20,25 @@
                 @Html.ActionLink("Växthemsida", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
+
                 @if (Request.IsAuthenticated)
                 {
-                <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
 
-                    <li>@Html.ActionLink("Hitta växter", "Index", "PlantLists")</li>
-                    <li>@Html.ActionLink("Forum", "Index", "Forums")</li>
+                        <li>@Html.ActionLink("Hitta växter", "Index", "PlantLists")</li>
+                        <li>@Html.ActionLink("Forum", "Index", "Forums")</li>
+                    </ul>
+
+                }
+
+
+                <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Fakta", "FunFacts", "FunFacts")</li>
                     <li>@Html.ActionLink("Vanliga frågor / FAQ", "Create", "FAQs")</li>
-                    <ul class="navbar-right" style="margin-top: 8px;">
+                </ul>
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav" style="margin-top: 8px;">
                         <li>
                             @using (Html.BeginForm("Search", "Search", FormMethod.Post))
                             {
@@ -37,8 +47,8 @@
                             }
                         </li>
                     </ul>
-                </ul>
                 }
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

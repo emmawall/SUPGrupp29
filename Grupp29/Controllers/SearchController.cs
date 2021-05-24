@@ -12,12 +12,6 @@ namespace Grupp29.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Search
-        //public ActionResult Search()
-        //{
-        //    return View();
-        //}
-
         public ActionResult Search(string searchedPlant)
         {
 
@@ -39,32 +33,6 @@ namespace Grupp29.Controllers
 
             return View(searchList);
         }
-
-        //public ActionResult ShowPlant(List<PlantList> list)
-        //{
-        //    return View(list);
-        //}
-
-        //public static PlantList GetIdFromPlant(int plantId)
-        //{
-
-        //    ApplicationDbContext dbContext = new ApplicationDbContext();
-
-        //    return dbContext.PlantLists.Find(plantId);
-        //}
-
-        //public ActionResult ShowPlant (string plant)
-        //{
-        //    var ctx = new ApplicationDbContext();
-        //    var plantList = new PlantList();
-        //    var plantAccount = ctx.PlantLists.FirstOrDefault(a => a.PlantId.Equals(plant));
-
-        //    plantList.PlantImg = plantAccount.PlantImg;
-        //    plantList.PlantName = plantAccount.PlantName;
-
-        //    return View("Details", plantList);
-        //}
-
 
         public ActionResult ShowPlant(int? id)
         {

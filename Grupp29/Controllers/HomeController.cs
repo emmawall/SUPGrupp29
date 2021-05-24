@@ -19,19 +19,5 @@ namespace Grupp29.Controllers
 
 			return View();
 		}
-
-		//public ActionResult MyPage()
-		//{
-		//	ViewBag.Message = "Välkommen till din personliga sida";
-
-		//	return View();
-		//}
-
-        //public ActionResult CreateList()
-        //{
-        //    ViewBag.Message = "Här kan du skapa din personliga lista";
-
-        //    return View();
-        //}
     }
 }
