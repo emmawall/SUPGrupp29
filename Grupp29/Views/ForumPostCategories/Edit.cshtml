@@ -4,29 +4,40 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Redigera</h2>
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
 
-
-@using (Html.BeginForm())
+@if (Request.IsAuthenticated)
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.CategoryName)
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Spara" class="btn btn-default" />
+    <h2>Redigera</h2>
+
+
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.CategoryName)
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Spara" class="btn btn-default" />
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Tillbaka", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Tillbaka", "Index")
+    </div>
+
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

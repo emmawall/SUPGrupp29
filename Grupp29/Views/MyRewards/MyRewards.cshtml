@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Mina vinster";
+}
+
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
+@if (Request.IsAuthenticated)
+{
+
+    <h2>Mina vinster</h2>
+
+    <img style="width: 250px; height: 300px;" src="~/RewardsImage/Reward-removebg-preview.png" />
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}

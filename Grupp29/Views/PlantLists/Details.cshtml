@@ -4,46 +4,58 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Detaljer</h2>
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
+@if (Request.IsAuthenticated)
+{
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PlantName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PlantName)
-        </dd>
+    <h2>Detaljer</h2>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PlantName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PlantName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.WaterNeed)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.WaterNeed)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.WaterNeed)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.WaterNeed)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Redigera", "Edit", new { id = Model.PlantId }) |
-    @Html.ActionLink("Tillbaka", "Index")
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Redigera", "Edit", new { id = Model.PlantId }) |
+        @Html.ActionLink("Tillbaka", "Index")
+    </p>
+
+
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}

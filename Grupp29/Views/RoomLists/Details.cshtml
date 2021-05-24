@@ -4,23 +4,33 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
+@if (Request.IsAuthenticated)
+{
 
-<div>
-    <h4>RoomList</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.listName)
-        </dt>
+    <h2>Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.listName)
-        </dd>
+    <div>
+        <h4>RoomList</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.listName)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Redigera", "Edit", new { id = Model.id }, new { @style = "font-size:larger;color: darkblue;" }) |
-    @Html.ActionLink("Tillbaka", "MyPage", "MyPage", null, new { @style = "font-size:larger;color: darkblue;" })
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.listName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Redigera", "Edit", new { id = Model.id }, new { @style = "font-size:larger;color: darkblue;" }) |
+        @Html.ActionLink("Tillbaka", "MyPage", "MyPage", null, new { @style = "font-size:larger;color: darkblue;" })
+    </p>
+
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}

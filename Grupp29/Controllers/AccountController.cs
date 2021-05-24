@@ -144,10 +144,10 @@ namespace Grupp29.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+			//ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
 
-            return View();
-        }
+			return View();
+		}
 
         //
         // POST: /Account/Register
@@ -190,11 +190,11 @@ namespace Grupp29.Controllers
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                        await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+                        //await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
 
                         return RedirectToAction("Index", "Home");
                     }
-                    ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+                    //ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
 
                     AddErrors(result);
                 }

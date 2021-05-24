@@ -1,105 +1,55 @@
 ﻿@{
-    ViewBag.Title = "Dina inlägg";
+    ViewBag.Title = "Mina växter";
 }
 @using Grupp29.Controllers
 @using Grupp29.Models
 
 <link href="~/Css/StyleManage.css" rel="stylesheet" />
-
-<h2>Mina listor</h2>
-<br />
-
-@{
-    RoomListsController roomListsController = new RoomListsController();
-    string currentlyLoggedIn = User.Identity.Name;
-}
-
-<p>
-    @Html.ActionLink("Lägg till lista", "Create", "RoomLists", null, new { @style = "font-size:larger;color: darkblue;" })
-</p>
-
-
-@*@{ int numberOfLists = 0;}
-    @foreach (RoomList list in roomListsController.GetRoomListsFromCreator (currentlyLoggedIn))
-    {
-        numberOfLists = numberOfLists + 1;
-    }*@
-<!--<h3>Mina listor--> @*(@numberOfLists.ToString()*@@*)*@<!--</h3>-->
-@foreach (RoomList list in roomListsController.GetRoomListsFromCreator(currentlyLoggedIn))
+@if (Request.IsAuthenticated)
 {
 
-    var listIdString = list.id.ToString();
-    <div class="formalBlogPost" id=@listIdString>
+    <h2>Mina listor</h2>
+    <br />
 
-        <div class="formalBlogPostContent">
+    
+        RoomListsController roomListsController = new RoomListsController();
+        string currentlyLoggedIn = User.Identity.Name;
+    
 
-            <h3>@Html.DisplayFor(modelItem => list.listName)</h3>
-            <h6>@Html.DisplayFor(modelItem => list.PlantContent)</h6>
-            <br />
+    <p>
+        @Html.ActionLink("Lägg till lista", "Create", "RoomLists", null, new { @style = "font-size:larger;color: darkblue;" })
+    </p>
+
+
+    foreach (RoomList list in roomListsController.GetRoomListsFromCreator(currentlyLoggedIn))
+    {
+
+        var listIdString = list.id.ToString();
+        <div id=@listIdString>
+
+            <div>
+
+                <h3>@Html.DisplayFor(modelItem => list.listName)</h3>
+                <h6>@Html.DisplayFor(modelItem => list.PlantContent)</h6>
+                <br />
+            </div>
+            <div>
+
+                @if (list.ListCreator.Equals(User.Identity.Name))
+                {
+
+                    <p>
+                        @Html.ActionLink("Redigera", "Edit", "RoomLists", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" }) | @Html.ActionLink("Ta bort", "Delete", "RoomLists", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" })
+
+                    </p>
+                }
+
+            </div>
         </div>
-        <div class="blogButtons">
 
-            @if (list.ListCreator.Equals(User.Identity.Name))
-            {
-
-                <p>
-                    @Html.ActionLink("Visa lista", "Details", "RoomLists", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" }) | @Html.ActionLink("Redigera", "Edit", "RoomLists", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" }) | @Html.ActionLink("Ta bort", "Delete", "RoomLists", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" })
-                    @*<span class="authorTime">
-                            @Html.DisplayFor(modelBlogPost => list.ListCreator)
-                        </span>*@
-                </p>
-            }
-            else
-            {
-                <p>
-                    @Html.ActionLink("Se inlägg", "Details", new { id = list.id }, new { @style = "font-size:larger;color: darkblue;" })
-                </p>
-            }
-
-        </div>
-    </div>
-
-}
-
-
-
-
-
-@*@model Grupp29.Models.RoomList
-
-    @{
-        ViewBag.Title = "Välkommen till din sida!";
     }
-
-    <h2>@ViewBag.Title</h2>
-
-        <dl class="dl-horizontal">
-
-                <dt>
-                    @Html.DisplayNameFor(m => m.listName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(m => m.listName)
-                </dd>
-
-        </dl>
-
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <p>
-                <a href="/RoomList/CreateList" class="btn btn-info btn-lg">
-                    <span class="glyphicon glyphicon-plus"></span> Lägg till
-                </a>
-            </p>
-        </div>
-    </body>
-    </html>*@
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}

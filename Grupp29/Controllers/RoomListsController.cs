@@ -18,29 +18,8 @@ namespace Grupp29.Controllers
         // GET: RoomLists
         public ActionResult Index()
         {
-  
-            //var ctx = new ApplicationDbContext();
-            //var user = User.Identity.GetUserId();
-            //var account = ctx.Users.FirstOrDefault(a => a.Id == user);
-            //var FriendList = db.RoomLists.Where(x => x.listId.Id.Equals(user) || x.listId.Id.Equals(user)).ToList();
-
-
-            //return View(FriendList);
-
-
 			return View(db.RoomLists.ToList());
 		}
-
-		//      public ActionResult showLists()
-		//      {
-
-
-		//          var user = User.Identity.GetUserId();
-		//          var account = ctx.Users.FirstOrDefault(a => a.Id == user);
-		//          var FriendList = db.RoomLists.Where(x => x.listId.Id.Equals(user) || x.listId.Id.Equals(user)).ToList();
-
-		//          return View(FriendList);
-		//      }
 
 		// GET: RoomLists/Details/5
 		public ActionResult Details(int? id)
@@ -95,8 +74,6 @@ namespace Grupp29.Controllers
                 db.SaveChanges();
                 return RedirectToAction("MyPage", "MyPage");
             }
-
-            //return View(roomList);
         }
 
         // GET: RoomLists/Edit/5
@@ -153,7 +130,7 @@ namespace Grupp29.Controllers
             RoomList roomList = db.RoomLists.Find(id);
             db.RoomLists.Remove(roomList);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("MyPage", "MyPage");
         }
 
         public List<RoomList> GetRoomListsFromCreator(string creator)

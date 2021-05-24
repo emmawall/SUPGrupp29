@@ -5,7 +5,7 @@
 }
 @using Grupp29.Controllers
 
-<link href="~/Css/StyleForums.css" rel="stylesheet" />
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
 
 
 @if (Request.IsAuthenticated)
@@ -57,7 +57,6 @@
                     <div style="width=100%; height=100%;">
                         <img src="~/ForumPostUploads/@ForumPost.FileName" style="border: solid white 40px;" width="40%" height="40%">
                     </div>
-                    @*<a href="~/FormalBlogPostUploads/@ForumPost.FileName" download>@ForumPost.FileName</a>*@
                 }
                 @if (ForumPost.Creator.Equals(User.Identity.Name))
                 {
@@ -87,6 +86,6 @@
 }
 else
 {
-    <h2>Du måste logga in för att komma åt denna sida!</h2>
+    <h2>Du måste registrera ett konto eller logga in för att komma åt denna sida!</h2>
 }
 

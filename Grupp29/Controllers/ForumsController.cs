@@ -37,7 +37,7 @@ namespace Grupp29.Controllers
             return dbContext.Fora.Find(id);
         }
 
-        //getprofilepicfrom var kommenterad förut
+        
 
         public static string GetProfilePictureFromUsername(string userName)
         {
@@ -190,55 +190,6 @@ namespace Grupp29.Controllers
 
         }
 
-        // GET: FormalBlogPosts/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    else
-        //    {
-        //        try
-        //        {
-        //            using (var context = new ApplicationDbContext())
-        //            {
-        //                var currentUser = User.Identity.GetUserId();
-        //                var postId = id.Value;
-        //            //    var exists = context.ViewedNotifications
-        //            //        .Any(x => x.PostId == postId &&
-        //            //                  x.PostType == postType &&
-        //            //                  x.UserId == currentUser);
-        //            //    if (!exists)
-        //            //    {
-        //            //        var viewedNotification = new ViewedNotifications
-        //            //        {
-        //            //            PostId = postId,
-        //            //            UserId = currentUser,
-        //            //            PostType = postType,
-        //            //            TimeStamp = DateTime.Now
-        //            //        };
-        //            //        context.ViewedNotifications.Add(viewedNotification);
-        //            //        context.SaveChanges();
-        //            //    }
-        //            //}
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw ex;
-        //        }
-        //    }
-        //    FormalBlogPost formalBlogPost = db.BlogPosts.Find(id);
-        //    if (formalBlogPost == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-
-        //    return View(formalBlogPost);
-        //}
-
-
-
         // GET: Forums/Details/5
         public ActionResult Details(int? id)
         {
@@ -254,7 +205,7 @@ namespace Grupp29.Controllers
             return View(forum);
         }
 
-        // GET: FormalBlogPosts/Create
+        // GET: Forums/Create
         public ActionResult Create()
         {
             var categories = db.ForumPostCategories.ToList();
@@ -268,7 +219,7 @@ namespace Grupp29.Controllers
             return View();
         }
 
-        // POST: FormalBlogPosts/Create
+        // POST: Forums/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -301,7 +252,7 @@ namespace Grupp29.Controllers
 
         }
 
-        // GET: FormalBlogPosts/Edit/5
+        // GET: Forums/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -316,7 +267,7 @@ namespace Grupp29.Controllers
             return View(forum);
         }
 
-        // POST: FormalBlogPosts/Edit/5
+        // POST: Forums/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -335,7 +286,7 @@ namespace Grupp29.Controllers
             return View(forum);
         }
 
-        // GET: FormalBlogPosts/Delete/5
+        // GET: Forums/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)

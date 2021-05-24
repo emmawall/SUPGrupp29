@@ -4,20 +4,31 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Ta bort kategori</h2>
+<link href="~/Css/StyleManage.css" rel="stylesheet" />
 
-<h3>Är du säker på att du vill ta bort denna kategori?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
+@if (Request.IsAuthenticated)
+{
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+    <h2>Ta bort kategori</h2>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Ta bort" class="btn btn-default" /> |
-            @Html.ActionLink("Tillbaka", "Index")
-        </div>
-    }
-</div>
+    <h3>Är du säker på att du vill ta bort denna kategori?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Ta bort" class="btn btn-default" /> |
+                @Html.ActionLink("Tillbaka", "Index")
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}
