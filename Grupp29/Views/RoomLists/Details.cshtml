@@ -5,24 +5,32 @@
 }
 
 <link href="~/Css/StyleManage.css" rel="stylesheet" />
+@if (Request.IsAuthenticated)
+{
 
-<h2>Details</h2>
+    <h2>Details</h2>
 
-<div>
-    <h4>RoomList</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.listName)
-        </dt>
+    <div>
+        <h4>RoomList</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.listName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.listName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.listName)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Redigera", "Edit", new { id = Model.id }, new { @style = "font-size:larger;color: darkblue;" }) |
-    @Html.ActionLink("Tillbaka", "MyPage", "MyPage", null, new { @style = "font-size:larger;color: darkblue;" })
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Redigera", "Edit", new { id = Model.id }, new { @style = "font-size:larger;color: darkblue;" }) |
+        @Html.ActionLink("Tillbaka", "MyPage", "MyPage", null, new { @style = "font-size:larger;color: darkblue;" })
+    </p>
+
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}

@@ -5,67 +5,77 @@
 }
 <link href="~/Css/StyleForums.css" rel="stylesheet" />
 
-<h4>Är du säker på att du vill ta bort ditt inlägg?</h4>
-<div>
-  
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+@if (Request.IsAuthenticated)
+{
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+    <h4>Är du säker på att du vill ta bort ditt inlägg?</h4>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Entry)
-        </dt>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Entry)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Creator)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entry)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Creator)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Entry)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Creator)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Creator)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DateTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FileName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FileName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.FileName)
+            </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            <dd>
+                @Html.DisplayFor(model => model.FileName)
+            </dd>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Ta bort" class="btn btn-default" /> |
-            @Html.ActionLink("Tillbaka", "Index")
-        </div>
-    }
-</div>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Ta bort" class="btn btn-default" /> |
+                @Html.ActionLink("Tillbaka", "Index")
+            </div>
+        }
+    </div>
+
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}

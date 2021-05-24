@@ -1,87 +1,91 @@
 ﻿@model Grupp29.Models.Forum
+@using Grupp29.Controllers
 
 @{
     ViewBag.Title = "Details";
 }
 
-    <link href="~/Css/StyleForums.css" rel="stylesheet" />
+    <link href="~/Css/StyleManage.css" rel="stylesheet" />
+@if (Request.IsAuthenticated)
+{
 
-@using Grupp29.Controllers
-<br />
-<div class="forumPost">
-    <div class="forumPostContent">
-        @{
-            var time = ForumsController.GetDateFromDateTime(Model.DateTime);
-            var imageSrc = ForumsController.GetProfilePictureFromUsername(Model.Creator);
-            var Name = ForumsController.GetNameFromUsername(Model.Creator);
 
-        }
-        <h3>@Html.DisplayFor(mode => Model.Title)<span class="authorTime">@time</span></h3>
-        <h6>@Html.DisplayFor(model => Model.Category)</h6>
-        <div class="profile-thumbnail" style="float:right;">
-            <span><img src="~/ProfileImage/@imageSrc" style="height:70px; width:70px;"></span>
+
+    <br />
+    <div class="forumPost">
+        <div class="forumPostContent">
+            @{
+                var time = ForumsController.GetDateFromDateTime(Model.DateTime);
+                var imageSrc = ForumsController.GetProfilePictureFromUsername(Model.Creator);
+                var Name = ForumsController.GetNameFromUsername(Model.Creator);
+
+            }
+            <h3>@Html.DisplayFor(mode => Model.Title)<span class="authorTime">@time</span></h3>
+            <h6>@Html.DisplayFor(model => Model.Category)</h6>
+            <div class="profile-thumbnail" style="float:right;">
+                <span><img src="~/ProfileImage/@imageSrc" style="height:70px; width:70px;"></span>
+                <br />
+                <p style="margin-left: 10px;">@Name</p>
+            </div>
+            <p style="white-space: pre-line">@Html.DisplayFor(modelItem => Model.Entry)</p>
             <br />
-            <p style="margin-left: 10px;">@Name</p>
+
         </div>
-        <p style="white-space: pre-line">@Html.DisplayFor(modelItem => Model.Entry)</p>
-        <br />
+        <div class="blogButtons">
+            @if (Model.FileName != null)
+            {
+                <img src="~/ForumPostUploads/@Model.FileName" style="border: solid white 40px;" width="40%" height="40%">
+                <br />
+            }
 
-    </div>
-    <div class="blogButtons">
-        @if (Model.FileName != null)
-        {
-            <img src="~/ForumPostUploads/@Model.FileName" style="border: solid white 40px;" width="40%" height="40%">
-            <br />
-        }
+            @if (Model.Creator.Equals(User.Identity.Name))
+            {
 
-        @if (Model.Creator.Equals(User.Identity.Name))
-        {
+                <p>
+                    @Html.ActionLink("Redigera", "Edit", new { id = Model.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = Model.Id })
+                </p>
+            }
+            @*else if (!Model.creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
+                {
 
-            <p>
-                @Html.ActionLink("Redigera", "Edit", new { id = Model.Id }) | @Html.ActionLink("Ta bort", "Delete", new { id = Model.Id })
-            </p>
-        }
-        @*else if (!Model.creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
-        {
+                    <p>
+                        @Html.ActionLink("Ta bort", "Delete", new { id = Model.id })
+                    </p>
+                }*@
+            else
+            {
+                <br />
+            }
+            @{
+                ForumPostCommentsController commentsController = new ForumPostCommentsController();
+            }
+            @foreach (var comment in commentsController.GetComments(Model.Id))
+            {
+                var commentTime = ForumsController.GetDateFromDateTime(comment.DateTime);
+                var Names = ForumsController.GetNameFromUsername(comment.Author);
+                <div class="forumPostComment" id="@Model.Id">
+                    <p>@comment.CommentText</p>
+                    <p class="forumPostCommentAuthor">@Names | @commentTime</p>
+                </div>
 
-            <p>
-                @Html.ActionLink("Ta bort", "Delete", new { id = Model.id })
-            </p>
-        }*@
-        else
-        {
-            <br />
-        }
-        @{
-            ForumPostCommentsController commentsController = new ForumPostCommentsController();
-        }
-        @foreach (var comment in commentsController.GetComments(Model.Id))
-        {
-            var commentTime = ForumsController.GetDateFromDateTime(comment.DateTime);
-            var Names = ForumsController.GetNameFromUsername(comment.Author);
-    <div class="forumPostComment" id="@Model.Id">
-        <p>@comment.CommentText</p>
-        <p class="forumPostCommentAuthor">@Names | @commentTime</p>
-    </div>
+            }
 
-        }
-
-        @{ int id = Model.Id;
-            int textBoxId = id + 999;
-            string textBoxIdString = textBoxId.ToString();}
-        @Html.TextArea(textBoxIdString, null, new { placeholder = "Skriv en kommentar", id = "1", rows = "3", cols = "1000" })
+            @{ int id = Model.Id;
+                int textBoxId = id + 999;
+                string textBoxIdString = textBoxId.ToString();}
+            @Html.TextArea(textBoxIdString, null, new { placeholder = "Skriv en kommentar", id = "1", rows = "3", cols = "1000" })
 
 
-        <button id="@Model.Id" onClick="reply_click(this.id)">Skicka</button>
+            <button id="@Model.Id" onClick="reply_click(this.id)">Skicka</button>
 
-    </div>
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
+        </div>
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
 
-    <script>
+        <script>
        var urlpath = '@Url.Action("CreateComment", "ForumPostComments")';
 
-    </script>
-    <script type="text/javascript">
+        </script>
+        <script type="text/javascript">
 
             $(function () {
 
@@ -109,12 +113,17 @@
 
                 location.reload();
             }
-    </script>
-</div>
+        </script>
+    </div>
 
-<p>
+    <p>
 
-    @Html.ActionLink("Tillbaka till inlägg", "Index")
-</p>
+        @Html.ActionLink("Tillbaka till inlägg", "Index")
+    </p>
 
+}
+else
+{
+    <h2>Du måste logga in för att komma åt denna sida!</h2>
+}
 

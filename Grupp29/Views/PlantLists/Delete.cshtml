@@ -5,51 +5,60 @@
 }
 
 <link href="~/Css/StyleManage.css" rel="stylesheet" />
+@if (Request.IsAuthenticated)
+{
 
-<h2>Ta bort växt</h2>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PlantName)
-        </dt>
+    <h2>Ta bort växt</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PlantName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PlantName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PlantName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.WaterNeed)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.WaterNeed)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.WaterNeed)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.WaterNeed)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Ta bort" class="btn btn-default" /> |
-            @Html.ActionLink("Tillbaka", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Ta bort" class="btn btn-default" /> |
+                @Html.ActionLink("Tillbaka", "Index")
+            </div>
+        }
+    </div>
+
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}

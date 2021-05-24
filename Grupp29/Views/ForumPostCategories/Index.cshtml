@@ -5,27 +5,35 @@
 }
 
 <link href="~/Css/StyleManage.css" rel="stylesheet" />
+@if (Request.IsAuthenticated)
+{
 
-<h2>Kategorier</h2>
+    <h2>Kategorier</h2>
 
-<p>
-    @Html.ActionLink("Lägg till ny kategori", "Create", null, new { @style = "font-size:larger;color: darkblue;" })
-</p>
-<table class="table">
+    <p>
+        @Html.ActionLink("Lägg till ny kategori", "Create", null, new { @style = "font-size:larger;color: darkblue;" })
+    </p>
+    <table class="table">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.ActionLink("Ta bort", "Delete", new { id = item.CategoryName }, new { @style = "font-size:larger;color: darkblue;" })
-            </td>
-        </tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Ta bort", "Delete", new { id = item.CategoryName }, new { @style = "font-size:larger;color: darkblue;" })
+                </td>
+            </tr>
+        }
 
-</table>
-<div>
-    @Html.ActionLink("Tillbaka", "Create", "ForumPostCategories", null, new { @style = "font-size:larger;color: darkblue;" })
-</div>
+    </table>
+    <div>
+        @Html.ActionLink("Tillbaka", "Create", "ForumPostCategories", null, new { @style = "font-size:larger;color: darkblue;" })
+    </div>
+
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}

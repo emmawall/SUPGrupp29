@@ -4,37 +4,44 @@
     ViewBag.Title = "Sökresultat";
 }
 <link href="~/Css/StyleManage.css" rel="stylesheet" />
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(m => m.PlantImg)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(m => m.PlantName)
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        <img src="~/Image/@item.PlantImg" style="width: 40px; height: 40px;">
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.PlantName)
-    </td>
-
-    @*Borttagen pga ej klar*@
-    @*<td>
-        @Html.ActionLink("Visa växt", "ShowPlant", new { id = @item.PlantId })
-    </td>*@
-</tr>
-    }
-
-</table>
+@if (Request.IsAuthenticated)
+{
 
 
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.PlantImg)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(m => m.PlantName)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Image/@item.PlantImg" style="width: 40px; height: 40px;">
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlantName)
+                </td>
+
+                @*Borttagen pga ej klar*@
+                @*<td>
+                        @Html.ActionLink("Visa växt", "ShowPlant", new { id = @item.PlantId })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}
 

@@ -5,27 +5,35 @@
 }
 
 <link href="~/Css/StyleManage.css" rel="stylesheet" />
+@if (Request.IsAuthenticated)
+{
 
 
-<h2>Index</h2>
+    <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @style = "font-size:larger;color: darkblue;" })
-</p>
-<table class="table">
-    <tr>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @style = "font-size:larger;color: darkblue;" })
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PlantCategoryName }, new { @style = "font-size:larger;color: darkblue;" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.PlantCategoryName }, new { @style = "font-size:larger;color: darkblue;" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.PlantCategoryName }, new { @style = "font-size:larger;color: darkblue;" })
-            </td>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PlantCategoryName }, new { @style = "font-size:larger;color: darkblue;" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PlantCategoryName }, new { @style = "font-size:larger;color: darkblue;" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PlantCategoryName }, new { @style = "font-size:larger;color: darkblue;" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}
