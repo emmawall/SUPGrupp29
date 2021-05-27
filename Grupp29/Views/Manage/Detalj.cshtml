@@ -1,0 +1,31 @@
+﻿@model Grupp29.Models.Trad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="container">
+    <h3>Current trad: @Html.DisplayFor(model => model.TradId), Posted by: @Html.DisplayFor(modelItem => Model.GetUserName)</h3>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            </div>
+
+            <div class="well-lg">
+                <div class="col-lg-10">
+                    @Html.DisplayFor(model => model.TradText)
+                </div>
+            </div>
+        </div>
+    </div>
+<div>
+    <p class="text-center">
+        @Html.ActionLink("Svara i denna tråd", "Skapa", "Inlägg")
+        @Html.ActionLink("Gå tillbaka till listan", "Index")
+    </p>
+</div>
+
+
