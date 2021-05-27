@@ -2,14 +2,13 @@
     background-image: url(Plants1.jpg);
     background-size: cover;
     color: black;
+
 }
 
-.h4{
+.jumbotron {
+    background: rgba(181, 219, 114, 0.1);
+}
+
+.row p {
     color: black;
 }
-
-.dl-horizontal{
-    color: black;
-}
-
-

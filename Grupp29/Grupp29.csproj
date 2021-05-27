@@ -329,6 +329,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ListView.css" />
     <Content Include="Css\Plants1.jpg" />
+    <Content Include="Css\StyleHome.css" />
     <Content Include="Css\StyleManage.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

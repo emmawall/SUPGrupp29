@@ -161,7 +161,7 @@ namespace Grupp29.Controllers
 
 			if (ImageFile == null) {
 
-				filename = "profilbild.png";
+				filename = "defaultProfilePic.png";
 
 			} else {
 				filename = ImageFile.FileName;
