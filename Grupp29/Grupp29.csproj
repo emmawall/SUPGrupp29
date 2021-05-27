@@ -346,7 +346,6 @@
     <Compile Include="Models\PlantCategory.cs" />
     <Compile Include="Models\PlantList.cs" />
     <Compile Include="Models\PlantRoom.cs" />
-    <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\RoomList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
