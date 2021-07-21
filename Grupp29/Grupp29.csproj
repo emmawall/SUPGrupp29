@@ -370,11 +370,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\Plants1.jpg" />
-    <Content Include="RewardsImage\I100Bklar.png" />
-    <Content Include="RewardsImage\I100klar.png" />
-    <Content Include="RewardsImage\I10Bklar.png" />
-    <Content Include="RewardsImage\I10klar.png" />
-    <Content Include="RewardsImage\I1Bklar.png" />
     <Content Include="RewardsImage\I1klar.png" />
     <Content Include="RewardsImage\I25Bklar.png" />
     <Content Include="RewardsImage\I25klar.png" />
