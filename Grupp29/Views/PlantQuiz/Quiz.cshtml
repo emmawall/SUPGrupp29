@@ -9,7 +9,7 @@
 
 
 <script>
-        var myQuestions = [
+        var Quiz = [
             {
                 question: "Vilken landskapsblomma har Uppland?",
                 answers: {
@@ -92,7 +92,7 @@
         var resultsContainer = document.getElementById('results');
         var submitButton = document.getElementById('submit');
 
-        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+        generateQuiz(Quiz, quizContainer, resultsContainer, submitButton);
 
         function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
 
