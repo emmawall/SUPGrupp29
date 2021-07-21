@@ -368,6 +368,7 @@
     <Content Include="FunFactsImage\Temadagar.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\Plants1.jpg" />
     <Content Include="RewardsImage\I100Bklar.png" />
     <Content Include="RewardsImage\I100klar.png" />
     <Content Include="RewardsImage\I10Bklar.png" />
@@ -488,7 +489,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ForumPostUploads\" />
-    <Folder Include="Image\" />
     <Folder Include="ProfileImage\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Role\" />
