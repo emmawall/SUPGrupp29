@@ -23,11 +23,12 @@
 
                 @if (Request.IsAuthenticated)
                 {
-                    <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">
 
-                        <li>@Html.ActionLink("Hitta växter", "Index", "PlantLists")</li>
-                        <li>@Html.ActionLink("Forum", "Index", "Forums")</li>
-                    </ul>
+                    <li>@Html.ActionLink("Hitta växter", "Index", "PlantLists")</li>
+                    <li>@Html.ActionLink("Forum", "Index", "Forums")</li>
+                    <li>@Html.ActionLink("Quiz", "Quiz", "PlantQuiz")</li>
+                </ul>
 
                 }
 
@@ -57,7 +58,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Växthemsida</p>
+            <p>&copy; @DateTime.Now.Year - Växtcommunity</p>
         </footer>
     </div>
 

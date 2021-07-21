@@ -207,6 +207,7 @@
     <Compile Include="Controllers\MyRewardsController.cs" />
     <Compile Include="Controllers\PlantCategoriesController.cs" />
     <Compile Include="Controllers\PlantListsController.cs" />
+    <Compile Include="Controllers\PlantQuizController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\RoomListsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -356,6 +357,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ListView.css" />
+    <Content Include="Content\Quiz.css" />
     <Content Include="Css\Plants1.jpg" />
     <Content Include="Css\StyleHome.css" />
     <Content Include="Css\StyleManage.css" />
@@ -363,6 +365,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FunFactsImage\Landskapsblommor.png" />
     <Content Include="FunFactsImage\Sverigekarta.png" />
+    <Content Include="FunFactsImage\Temadagar.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="RewardsImage\I100Bklar.png" />
@@ -480,6 +483,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\FAQs\Create.cshtml" />
     <Content Include="Views\MyRewards\MyRewards.cshtml" />
+    <Content Include="Views\PlantQuiz\Quiz.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
