@@ -3,6 +3,9 @@
     ViewBag.Title = "Mina vinster";
 }
 
+@using Grupp29.Controllers;
+@using Grupp29.Models;
+
 <link href="~/Css/StyleManage.css" rel="stylesheet" />
 @if (Request.IsAuthenticated)
 {
@@ -10,6 +13,54 @@
     <h2>Mina vinster</h2>
 
     <img style="width: 250px; height: 300px;" src="~/RewardsImage/Reward-removebg-preview.png" />
+
+    MyRewardsController myRewardsController = new MyRewardsController();
+    string currentlyLoggedIn = User.Identity.Name;
+
+    int numberOfForumPosts = 0;
+    foreach (Forum ForumPost in myRewardsController.GetForumPostRewardFromAuthor(currentlyLoggedIn))
+    {
+        numberOfForumPosts = numberOfForumPosts + 1;
+    }
+
+
+
+
+    int numberOfComments = 0;
+    foreach (ForumPostComment Comment in myRewardsController.GetCommentRewardFromAuthor(currentlyLoggedIn))
+    {
+        numberOfComments = numberOfComments + 1;
+    }
+
+    if (numberOfForumPosts >= 1)
+    {
+        <img style="width: 250px; height: 300px;" src="~/RewardsImage/firstPost.png" />
+    }
+
+    if (numberOfForumPosts >= 5)
+    {
+        <img style="width: 250px; height: 300px;" src="~/RewardsImage/5posts.png" />
+    }
+
+    if (numberOfForumPosts >= 5 & numberOfForumPosts <= 9)
+    {
+        <img style="width: 250px; height: 300px;" src="~/RewardsImage/10PostsBlur.png" />
+    }
+
+    @*if (numberOfComments >= 3)
+        {
+            <img style="width: 250px; height: 300px;" src="~/RewardsImage/Reward-removebg-preview.png" />
+        }*@
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <p><b>Antal inlägg du skapat i forumet: </b> @numberOfForumPosts.ToString()</p>
+
+    <p><b>Antal kommentarer du gjort i forumet: </b>@numberOfComments.ToString()</p>
+
 }
 else
 {
