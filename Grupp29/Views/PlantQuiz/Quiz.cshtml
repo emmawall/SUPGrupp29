@@ -1,5 +1,14 @@
 ﻿<link href="~/Content/Quiz.css" rel="stylesheet" />
 
+<h2>Quiz</h2>
+<p>
+    Här kan du testa dina kunskaper om vad du lärt dig på hemsidan.
+    <br>Dela gärna ditt resultat med andra användare i forumet under kategorin "Quiz".
+    <br>Lycka till!
+</p>
+
+<br />
+
 <div id="quiz">
 </div>
 <button id="submit">Visa resultat</button>
@@ -7,155 +16,154 @@
 
 <button onClick="window.location.reload();">Spela igen</button>
 
-
 <script>
-        var Quiz = [
-            {
-                question: "Vilken landskapsblomma har Uppland?",
-                answers: {
-                    A: 'Ginst',
-                    B: 'Linnea',
-                    C: 'Kungsängslilja',
-                    D: 'Skogsstjärna'
-                },
-                correctAnswer: 'C'
+    var Quiz = [
+        {
+            question: "Vilken landskapsblomma har Uppland?",
+            answers: {
+                A: 'Ginst',
+                B: 'Linnea',
+                C: 'Kungsängslilja',
+                D: 'Skogsstjärna'
             },
+            correctAnswer: 'C'
+        },
 
-            {
-                question: "Vilken av dessa är INTE en så kallad uteväxt?",
-                answers: {
-                    A: 'Fiolfikus',
-                    B: 'Ljung',
-                    C: 'Dahlia',
-                    D: 'Petunia'
-                },
-                correctAnswer: 'A'
+        {
+            question: "Vilken av dessa är INTE en så kallad uteväxt?",
+            answers: {
+                A: 'Fiolfikus',
+                B: 'Ljung',
+                C: 'Dahlia',
+                D: 'Petunia'
             },
+            correctAnswer: 'A'
+        },
 
-            {
-                question: "Vilken landskapsblomma har Närke?",
-                answers: {
-                    A: 'Kungsspira',
-                    B: 'Blåklint',
-                    C: 'Fjällsippa',
-                    D: 'Gullviva'
-                },
-                correctAnswer: 'D'
+        {
+            question: "Vilken landskapsblomma har Närke?",
+            answers: {
+                A: 'Kungsspira',
+                B: 'Blåklint',
+                C: 'Fjällsippa',
+                D: 'Gullviva'
             },
+            correctAnswer: 'D'
+        },
 
-            {
-                question: "När på året infaller tulpanens dag?",
-                answers: {
-                    A: '1 maj',
-                    B: '15 januari',
-                    C: '30 juni',
-                    D: '14 oktober'
-                },
-                correctAnswer: 'B'
+        {
+            question: "När på året infaller tulpanens dag?",
+            answers: {
+                A: '1 maj',
+                B: '15 januari',
+                C: '30 juni',
+                D: '14 oktober'
             },
+            correctAnswer: 'B'
+        },
 
-            {
-                question: "Vilken landskapsblomma har Gotland?",
-                answers: {
-                    A: 'Mistel',
-                    B: 'Liljekonvalj',
-                    C: 'Smörboll',
-                    D: 'Murgröna'
-                },
-                correctAnswer: 'D'
+        {
+            question: "Vilken landskapsblomma har Gotland?",
+            answers: {
+                A: 'Mistel',
+                B: 'Liljekonvalj',
+                C: 'Smörboll',
+                D: 'Murgröna'
             },
+            correctAnswer: 'D'
+        },
 
-            {
-                question: "När på året infaller rosens dag?",
-                answers: {
-                    A: '14 februari',
-                    B: '23 november',
-                    C: '2 juli',
-                    D: '10 december'
-                },
-                correctAnswer: 'C'
+        {
+            question: "När på året infaller rosens dag?",
+            answers: {
+                A: '14 februari',
+                B: '23 november',
+                C: '2 juli',
+                D: '10 december'
             },
+            correctAnswer: 'C'
+        },
 
-            {
-                question: "Vilken är Södermanlands landskapsblomma?",
-                answers: {
-                    A: 'Förgätmigej',
-                    B: 'Vit näckros',
-                    C: 'Åkerbär',
-                    D: 'Mossippa'
-                },
-                correctAnswer: 'B'
-            }
-        ];
+        {
+            question: "Vilken är Södermanlands landskapsblomma?",
+            answers: {
+                A: 'Förgätmigej',
+                B: 'Vit näckros',
+                C: 'Åkerbär',
+                D: 'Mossippa'
+            },
+            correctAnswer: 'B'
+        }
+    ];
 
-        var quizContainer = document.getElementById('quiz');
-        var resultsContainer = document.getElementById('results');
-        var submitButton = document.getElementById('submit');
+    var quizContainer = document.getElementById('quiz');
+    var resultsContainer = document.getElementById('results');
+    var submitButton = document.getElementById('submit');
 
-        generateQuiz(Quiz, quizContainer, resultsContainer, submitButton);
+    generateQuiz(Quiz, quizContainer, resultsContainer, submitButton);
 
-        function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+    function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
 
-            function showQuestions(questions, quizContainer) {
-                var output = [];
-                var answers;
+        function showQuestions(questions, quizContainer) {
+            var output = [];
+            var answers;
 
-                for (var i = 0; i < questions.length; i++) {
+            for (var i = 0; i < questions.length; i++) {
 
-                    answers = [];
+                answers = [];
 
-           
-                    for (letter in questions[i].answers) {
 
-                        answers.push(
-                            '<label>'
-                            + '<input type="radio" name="question' + i + '" value="' + letter + '">'
-                            + letter + ': '
-                            + questions[i].answers[letter]
-                            + '</label>'
-                        );
-                    }
+                for (letter in questions[i].answers) {
 
-                    output.push(
-                        '<div class="question">' + questions[i].question + '</div>'
-                        + '<div class="answers">' + answers.join('') + '</div>'
+                    answers.push(
+                        '<label>'
+                        + '<input type="radio" name="question' + i + '" value="' + letter + '">'
+                        + letter + ': '
+                        + questions[i].answers[letter]
+                        + '</label>'
                     );
                 }
 
-                quizContainer.innerHTML = output.join('');
+                output.push(
+                    '<div class="question">' + questions[i].question + '</div>'
+                    + '<div class="answers">' + answers.join('') + '</div>'
+                );
             }
 
+            quizContainer.innerHTML = output.join('');
+        }
 
-            function showResults(questions, quizContainer, resultsContainer) {
 
-                var answerContainers = quizContainer.querySelectorAll('.answers');
+        function showResults(questions, quizContainer, resultsContainer) {
 
-                var userAnswer = '';
-                var numCorrect = 0;
+            var answerContainers = quizContainer.querySelectorAll('.answers');
 
-                for (var i = 0; i < questions.length; i++) {
+            var userAnswer = '';
+            var numCorrect = 0;
 
-                    userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+            for (var i = 0; i < questions.length; i++) {
 
-                    if (userAnswer === questions[i].correctAnswer) {
-                        numCorrect++;
+                userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
 
-                        answerContainers[i].style.color = 'green';
-                    }
+                if (userAnswer === questions[i].correctAnswer) {
+                    numCorrect++;
 
-                    else {
-                        answerContainers[i].style.color = 'red';
-                    }
+                    answerContainers[i].style.color = 'green';
                 }
 
-                resultsContainer.innerHTML = numCorrect + ' av ' + questions.length + ' poäng ';
+                else {
+                    answerContainers[i].style.color = 'red';
+                }
             }
 
-            showQuestions(questions, quizContainer);
-
-            submitButton.onclick = function () {
-                showResults(questions, quizContainer, resultsContainer);
-            }
-
+            resultsContainer.innerHTML = numCorrect + ' av ' + questions.length + ' poäng ';
         }
+
+        showQuestions(questions, quizContainer);
+
+        submitButton.onclick = function () {
+            showResults(questions, quizContainer, resultsContainer);
+        }
+
+    }
 </script>
