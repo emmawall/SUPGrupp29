@@ -385,7 +385,7 @@
     <Content Include="RewardsImage\K25klar.png" />
     <Content Include="RewardsImage\K50Bklar.png" />
     <Content Include="RewardsImage\K50klar.png" />
-    <Content Include="RewardsImage\Reward-removebg-preview.png" />
+    <Content Include="RewardsImage\Reward.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
