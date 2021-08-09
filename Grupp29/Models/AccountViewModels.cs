@@ -77,7 +77,7 @@ namespace Grupp29.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Bekräfta lösenord")]
-        [Compare("Password", ErrorMessage = "Lösenordet och det bekräftade lösenordet matchar inte.")]
+        [Compare("Password", ErrorMessage = "Lösenorden matchar inte.")]
         public string ConfirmPassword { get; set; }
 
         [Required]
@@ -106,14 +106,14 @@ namespace Grupp29.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Lösenordet måste vara minst 6 tecken långt.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Lösenorden matchar inte.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
