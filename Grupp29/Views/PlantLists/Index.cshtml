@@ -15,8 +15,8 @@
 
     //Borttagen pga admin-funktionen inte är klar
     @*<p>
-        @Html.ActionLink("Lägg till ny växt", "Create", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" })
-    </p>*@
+            @Html.ActionLink("Lägg till ny växt", "Create", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" })
+        </p>*@
 
     var Model1 = Model.OrderByDescending(c => c.PlantId);
     PlantListsController controller = new PlantListsController();
@@ -88,9 +88,9 @@
                 </td>
                 @*Borttagen pga admin-funktionen inte är klar*@
                 @*<td>*@
-                    @*@Html.ActionLink("Redigera", "Edit", new { id = item.PlantId }) |*@
-                    @*@Html.ActionLink("Ta bort", "Delete", new { id = item.PlantId }, new { @style = "font-size:larger;color: darkblue;" })
-                </td>*@
+                @*@Html.ActionLink("Redigera", "Edit", new { id = item.PlantId }) |*@
+                @*@Html.ActionLink("Ta bort", "Delete", new { id = item.PlantId }, new { @style = "font-size:larger;color: darkblue;" })
+                    </td>*@
             </tr>
         }
 
@@ -98,6 +98,7 @@
 }
 else
 {
+    <link href="~/Css/StyleManage.css" rel="stylesheet" />
     <h2>
         Du måste registrera ett konto eller logga in för att komma åt denna sida!
     </h2>

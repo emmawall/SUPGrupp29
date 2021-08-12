@@ -7,61 +7,63 @@
 {
 
     <link href="~/Css/StyleManage.css" rel="stylesheet" />
-<h2>Skapa nytt inlägg</h2>
+    <h2>Skapa nytt inlägg</h2>
 
 
     using (Html.BeginForm("Create", "Forums", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-<div class="form-horizontal customForm">
-  
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.CategoryList))
-            @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
-            @Html.ActionLink("Skapa ny kategori", "Create", "ForumPostCategories", null, new { @style = "font-size:larger;color: darkblue;" })
+        <div class="form-horizontal customForm">
 
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.CategoryList))
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                    @Html.ActionLink("Skapa ny kategori", "Create", "ForumPostCategories", null, new { @style = "font-size:larger;color: darkblue;" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Entry, 10, 60, htmlAttributes: new { style = "max-width: 600px; height: 200px;" })
+                    @Html.ValidationMessageFor(model => model.Entry, "", new { @class = "text-danger" })
+
+                    <input type="file" id="file" name="file">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Skapa nytt inlägg" class="btn btn-default" />
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Tillbaka till forum", "Index", null, new { @style = "font-size:larger;color: darkblue;" })
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Entry, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Entry, 10, 60, htmlAttributes: new { style = "max-width: 600px; height: 200px;" })
-            @Html.ValidationMessageFor(model => model.Entry, "", new { @class = "text-danger" })
-        
-        <input type="file" id="file" name="file">
-
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Skapa nytt inlägg" class="btn btn-default" />
-        </div>
-    </div>
-</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 }
-
-<div>
-    @Html.ActionLink("Tillbaka till forum", "Index", null, new { @style = "font-size:larger;color: darkblue;" })
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-} else
+else
 {
+    <link href="~/Css/StyleManage.css" rel="stylesheet" />
     <h2>Du måste logga in för att komma åt denna sida!</h2>
 }

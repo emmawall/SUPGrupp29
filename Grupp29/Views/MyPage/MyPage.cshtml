@@ -11,10 +11,10 @@
     <h2>Mina listor</h2>
     <br />
 
-    
-        RoomListsController roomListsController = new RoomListsController();
-        string currentlyLoggedIn = User.Identity.Name;
-    
+
+    RoomListsController roomListsController = new RoomListsController();
+    string currentlyLoggedIn = User.Identity.Name;
+
 
     <p>
         @Html.ActionLink("Lägg till lista", "Create", "RoomLists", null, new { @style = "font-size:larger;color: darkblue;" })
@@ -51,5 +51,6 @@
 }
 else
 {
+    <link href="~/Css/StyleManage.css" rel="stylesheet" />
     <h1>Du måste logga in för att komma åt denna sida!</h1>
 }
