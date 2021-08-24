@@ -102,18 +102,21 @@
 
     generateQuiz(Quiz, quizContainer, resultsContainer, submitButton);
 
-    function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+    function generateQuiz(questions, quizContainer, resultsContainer, submitButton)
+    {
 
-        function showQuestions(questions, quizContainer) {
+        function showQuestions(questions, quizContainer)
+        {
             var output = [];
             var answers;
 
-            for (var i = 0; i < questions.length; i++) {
+            for (var i = 0; i < questions.length; i++)
+            {
 
                 answers = [];
 
-
-                for (letter in questions[i].answers) {
+                for (letter in questions[i].answers)
+                {
 
                     answers.push(
                         '<label>'
@@ -133,37 +136,76 @@
             quizContainer.innerHTML = output.join('');
         }
 
-
-        function showResults(questions, quizContainer, resultsContainer) {
+        function showResults(questions, quizContainer, resultsContainer)
+        {
 
             var answerContainers = quizContainer.querySelectorAll('.answers');
 
             var userAnswer = '';
             var numCorrect = 0;
 
-            for (var i = 0; i < questions.length; i++) {
+            for (var i = 0; i < questions.length; i++)
+            {
 
                 userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
 
-                if (userAnswer === questions[i].correctAnswer) {
+                if (userAnswer === questions[i].correctAnswer)
+                {
                     numCorrect++;
 
                     answerContainers[i].style.color = 'green';
                 }
 
-                else {
+                else
+                {
                     answerContainers[i].style.color = 'red';
                 }
             }
 
             resultsContainer.innerHTML = numCorrect + ' av ' + questions.length + ' poäng ';
+
+            if (numCorrect == questions.length)
+            {
+                gameScorePopup(true, numCorrect, questions.length);
+            }
+            else
+            {
+                gameScorePopup(false, numCorrect, questions.length);
+            }
         }
 
         showQuestions(questions, quizContainer);
 
-        submitButton.onclick = function () {
+        submitButton.onclick = function ()
+        {
             showResults(questions, quizContainer, resultsContainer);
-        }
+        };
 
+    }
+
+    function gameScorePopup(winner = false, correctAswers, totalQuestions)
+    {
+        let timerInterval;
+        Swal.fire({
+            title: winner ? "Grattis du har fått alla rätt!": "Du har fått " + correctAswers + "/" + totalQuestions + " poäng!, försök igen!" ,
+            imageUrl: winner ? '/Content/img/youwon.gif' : '/Content/img/gameover.gif',
+            @*imageWidth: 1200,
+            imageHeight: 600,*@
+            imageAlt: winner ? 'Winner' : 'Game Over',
+            timer: 2500,
+            showConfirmButton: false,
+            didOpen: () =>
+            {
+                const b = Swal.getHtmlContainer().querySelector('b');
+                timerInterval = setInterval(() =>
+                {
+                    b.textContent = Swal.getTimerLeft();
+                }, 100);
+            },
+            willClose: () =>
+            {
+                clearInterval(timerInterval);
+            }
+        });
     }
 </script>

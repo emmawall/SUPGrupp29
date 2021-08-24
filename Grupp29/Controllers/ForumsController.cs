@@ -37,43 +37,35 @@ namespace Grupp29.Controllers
             return dbContext.Fora.Find(id);
         }
 
-        
-
         public static string GetProfilePictureFromUsername(string userName)
         {
             string image = "";
             ApplicationDbContext dbContext = new ApplicationDbContext();
             foreach (ApplicationUser user in dbContext.Users.ToList())
             {
-
                 if (user.UserName.Equals(userName))
                 {
                     image = user.ProfileImg;
                 }
             }
             return image;
-
         }
 
         public static string GetNameFromUsername(string userName)
         {
             string name = "";
             string displayName = "";
-        
 
             ApplicationDbContext dbContext = new ApplicationDbContext();
             foreach (ApplicationUser user in dbContext.Users.ToList())
             {
-
                 if (user.UserName.Equals(userName))
                 {
                     displayName = user.DisplayName;
                     name = displayName;
-              
                 }
             }
             return name;
-
         }
 
         [HttpPost]
@@ -89,7 +81,6 @@ namespace Grupp29.Controllers
 
         public static string GetDateFromDateTime(DateTime DateTime)
         {
-
             string year = DateTime.Year.ToString();
             string month = DateTime.Month.ToString();
             string day = DateTime.Day.ToString();
@@ -102,36 +93,47 @@ namespace Grupp29.Controllers
                 case 1:
                     monthInText = "januari";
                     break;
+
                 case 2:
                     monthInText = "februari";
                     break;
+
                 case 3:
                     monthInText = "mars";
                     break;
+
                 case 4:
                     monthInText = "april";
                     break;
+
                 case 5:
                     monthInText = "maj";
                     break;
+
                 case 6:
                     monthInText = "juni";
                     break;
+
                 case 7:
                     monthInText = "juli";
                     break;
+
                 case 8:
                     monthInText = "augusti";
                     break;
+
                 case 9:
                     monthInText = "september";
                     break;
+
                 case 10:
                     monthInText = "oktober";
                     break;
+
                 case 11:
                     monthInText = "november";
                     break;
+
                 case 12:
                     monthInText = "december";
                     break;
@@ -140,40 +142,32 @@ namespace Grupp29.Controllers
             if (DateTime.DayOfWeek.ToString().Equals("Monday"))
             {
                 dayinText = "Måndag";
-
             }
             else if (DateTime.DayOfWeek.ToString().Equals("Tuesday"))
             {
                 dayinText = "Tisdag";
-
             }
             else if (DateTime.DayOfWeek.ToString().Equals("Wednesday"))
             {
                 dayinText = "Onsdag";
-
             }
             else if (DateTime.DayOfWeek.ToString().Equals("Thursday"))
             {
                 dayinText = "Torsdag";
-
             }
             else if (DateTime.DayOfWeek.ToString().Equals("Friday"))
             {
                 dayinText = "Fredag";
-
             }
             else if (DateTime.DayOfWeek.ToString().Equals("Saturday"))
             {
                 dayinText = "Lördag";
-
             }
             else if (DateTime.DayOfWeek.ToString().Equals("Sunday"))
             {
                 dayinText = "Söndag";
-
             }
             string fullDate = dayinText + ", " + day + " " + monthInText + " " + year;
-
 
             return fullDate;
         }
@@ -181,13 +175,18 @@ namespace Grupp29.Controllers
         public ActionResult Index(string searchString)
         {
             var forumPosts = from s in db.Fora
-                            select s;
+                             select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 forumPosts = forumPosts.Where(s => s.Category.Equals(searchString));
             }
-            return View(forumPosts);
+            //Kommentera
+            if (TempData["count"] != null)
+            {
+                ViewBag.ForumPostCount = TempData["count"].ToString();
+            }
 
+            return View(forumPosts);
         }
 
         // GET: Forums/Details/5
@@ -220,7 +219,7 @@ namespace Grupp29.Controllers
         }
 
         // POST: Forums/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -236,8 +235,6 @@ namespace Grupp29.Controllers
             forum.Creator = User.Identity.Name;
             forum.DateTime = DateTime.Now;
 
-
-
             if (file != null)
             {
                 string fileName = Path.GetFileName(file.FileName);
@@ -248,8 +245,13 @@ namespace Grupp29.Controllers
 
             db.Fora.Add(forum);
             db.SaveChanges();
-            return RedirectToAction("Index");
 
+
+            var listOfAllForumPosts = db.Fora.Where(x => x.Creator == User.Identity.Name).ToList();
+            int countOfPosts = listOfAllForumPosts.Count;
+            TempData["count"] = countOfPosts.ToString();
+
+            return RedirectToAction("Index");
         }
 
         // GET: Forums/Edit/5
@@ -268,7 +270,7 @@ namespace Grupp29.Controllers
         }
 
         // POST: Forums/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

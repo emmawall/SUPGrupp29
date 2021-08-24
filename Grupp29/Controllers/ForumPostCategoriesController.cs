@@ -19,7 +19,7 @@ namespace Grupp29.Controllers
         {
             return View(db.ForumPostCategories.ToList());
         }
-
+        
         // GET: ForumPostCategories/Details/5
         public ActionResult Details(string id)
         {

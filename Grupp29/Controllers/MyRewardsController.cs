@@ -33,7 +33,6 @@ namespace Grupp29.Controllers
             return listOfMatchingForumPosts;
 
         }
-
         public List<ForumPostComment> GetCommentRewardFromAuthor(string author)
         {
 

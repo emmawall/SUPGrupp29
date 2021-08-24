@@ -22,69 +22,59 @@
     MyRewardsController myRewardsController = new MyRewardsController();
     string currentlyLoggedIn = User.Identity.Name;
 
-    int numberOfForumPosts = 0;
-    foreach (Forum ForumPost in myRewardsController.GetForumPostRewardFromAuthor(currentlyLoggedIn))
-    {
-        numberOfForumPosts = numberOfForumPosts + 1;
-    }
+    var numberOfForumPosts = myRewardsController.GetForumPostRewardFromAuthor(currentlyLoggedIn);
+
+    var numberOfComments = myRewardsController.GetCommentRewardFromAuthor(currentlyLoggedIn);
 
 
+    <p><b>Antal inlägg du skapat i forumet: </b> @numberOfForumPosts.Count.ToString()</p>
 
-
-    int numberOfComments = 0;
-    foreach (ForumPostComment Comment in myRewardsController.GetCommentRewardFromAuthor(currentlyLoggedIn))
-    {
-        numberOfComments = numberOfComments + 1;
-    }
-
-    <p><b>Antal inlägg du skapat i forumet: </b> @numberOfForumPosts.ToString()</p>
-
-    if (numberOfForumPosts <= 0)
+    if (numberOfForumPosts.Count <= 0)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I1Bklar.png" />
     }
-
-    if (numberOfForumPosts >= 1)
+    if (numberOfForumPosts.Count >= 1)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I1klar.png" />
     }
 
-    if (numberOfForumPosts >= 0 & numberOfForumPosts <= 9)
+    if (numberOfForumPosts.Count >= 0 & numberOfForumPosts.Count <= 9)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I10Bklar.png" />
     }
 
-    if (numberOfForumPosts >= 10)
+    if (numberOfForumPosts.Count >= 10)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I10klar.png" />
     }
 
-    if (numberOfForumPosts >= 0 & numberOfForumPosts <= 24)
+    if (numberOfForumPosts.Count >= 0 & numberOfForumPosts.Count <= 24)
     {
+
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I25Bklar.png" />
     }
 
-    if (numberOfForumPosts >= 25)
+    if (numberOfForumPosts.Count >= 25)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I25klar.png" />
     }
 
-    if (numberOfForumPosts >= 0 & numberOfForumPosts <= 49)
+    if (numberOfForumPosts.Count >= 0 & numberOfForumPosts.Count <= 49)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I50Bklar.png" />
     }
 
-    if (numberOfForumPosts >= 50)
+    if (numberOfForumPosts.Count >= 50)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I50klar.png" />
     }
 
-    if (numberOfForumPosts >= 0 & numberOfForumPosts <= 99)
+    if (numberOfForumPosts.Count >= 0 & numberOfForumPosts.Count <= 99)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I100Bklar.png" />
     }
 
-    if (numberOfForumPosts >= 100)
+    if (numberOfForumPosts.Count >= 100)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/I100klar.png" />
     }
@@ -93,57 +83,58 @@
     <br />
     <br />
 
-    <p><b>Antal kommentarer du gjort i forumet: </b>@numberOfComments.ToString()</p>
+    <p><b>Antal kommentarer du gjort i forumet: </b>@numberOfComments.Count.ToString()</p>
 
-    if (numberOfComments <= 0)
+    if (numberOfComments.Count <= 0)
     {
         <img style="width: 220px; height: 265px;" src="~/RewardsImage/K1Bklar.png" />
     }
 
-    if (numberOfComments >= 1)
+    if (numberOfComments.Count >= 1)
     {
         <img style="width: 220px; height: 265px;" src="~/RewardsImage/K1klar.png" />
     }
 
-    if (numberOfComments >= 0 & numberOfComments <= 9)
+    if (numberOfComments.Count >= 0 & numberOfComments.Count <= 9)
     {
         <img style="width: 220px; height: 270px;" src="~/RewardsImage/K10Bklar.png" />
     }
 
-    if (numberOfComments >= 10)
+    if (numberOfComments.Count >= 10)
     {
         <img style="width: 215px; height: 265px;" src="~/RewardsImage/K10klar.png" />
     }
 
-    if (numberOfComments >= 0 & numberOfComments <= 24)
+    if (numberOfComments.Count >= 0 & numberOfComments.Count <= 24)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/K25Bklar.png" />
     }
 
-    if (numberOfComments >= 25)
+    if (numberOfComments.Count >= 25)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/K25klar.png" />
     }
 
-    if (numberOfComments >= 0 & numberOfComments <= 49)
+    if (numberOfComments.Count >= 0 & numberOfComments.Count <= 49)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/K50Bklar.png" />
     }
 
-    if (numberOfComments >= 50)
+    if (numberOfComments.Count >= 50)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/K50klar.png" />
     }
 
-    if (numberOfComments >= 0 & numberOfComments <= 99)
+    if (numberOfComments.Count >= 0 & numberOfComments.Count <= 99)
     {
         <img style="width: 210px; height: 260px;" src="~/RewardsImage/K100Bklar.png" />
     }
 
-    if (numberOfComments >= 100)
+    if (numberOfComments.Count >= 100)
     {
         <img style="width: 200px; height: 250px;" src="~/RewardsImage/K100klar.png" />
     }
+
 }
 else
 {

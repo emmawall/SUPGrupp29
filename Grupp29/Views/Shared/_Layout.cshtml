@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,15 +22,14 @@
 
                 @if (Request.IsAuthenticated)
                 {
-                <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
 
-                    <li>@Html.ActionLink("Hitta växter", "Index", "PlantLists")</li>
-                    <li>@Html.ActionLink("Forum", "Index", "Forums")</li>
-                    <li>@Html.ActionLink("Quiz", "Quiz", "PlantQuiz")</li>
-                </ul>
+                        <li>@Html.ActionLink("Hitta växter", "Index", "PlantLists")</li>
+                        <li>@Html.ActionLink("Forum", "Index", "Forums")</li>
+                        <li>@Html.ActionLink("Quiz", "Quiz", "PlantQuiz")</li>
+                    </ul>
 
                 }
-
 
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Fakta", "FunFacts", "FunFacts")</li>
@@ -61,7 +59,7 @@
             <p>&copy; @DateTime.Now.Year - Växtcommunity</p>
         </footer>
     </div>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
